@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".configscreen">
 
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="105dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="556dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="@string/button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="212dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="480dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="ABCD" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <RadioButton
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="@drawable/forg"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:background="@drawable/forg2"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:background="@drawable/forg3"
+            android:button="@null" />
+
+
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
