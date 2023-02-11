@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CrossyRoad</string>
+    <string name="name">Name</string>
+    <string name="button">Button</string>
 </resources>
