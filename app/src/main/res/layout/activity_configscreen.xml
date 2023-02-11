@@ -7,71 +7,109 @@
     tools:context=".configscreen">
 
 
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="105dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="556dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="@string/button"
+        android:layout_marginBottom="72dp"
+        android:text="Start!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/name"
         android:layout_width="212dp"
         android:layout_height="48dp"
-        android:layout_marginTop="480dp"
+        android:autofillHints="ABCD"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="@string/name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="ABCD" />
+        app:layout_constraintVertical_bias="0.62" />
 
     <RadioGroup
+        android:id="@+id/sprites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar2"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
+            android:id="@+id/sprite1"
             android:layout_width="116dp"
             android:layout_height="116dp"
             android:background="@drawable/forg"
-            android:button="@null" />
+            android:button="@android:drawable/btn_radio" />
 
         <RadioButton
+            android:id="@+id/sprite2"
             android:layout_width="116dp"
             android:layout_height="116dp"
             android:background="@drawable/forg2"
-            android:button="@null" />
+            android:button="@android:drawable/btn_radio" />
 
         <RadioButton
+            android:id="@+id/sprite3"
             android:layout_width="match_parent"
             android:layout_height="116dp"
             android:background="@drawable/forg3"
-            android:button="@null" />
+            android:button="@android:drawable/btn_radio" />
 
 
     </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/difficulty"
+        android:layout_width="310dp"
+        android:layout_height="66dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="Easy" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="Hard" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficulty:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
