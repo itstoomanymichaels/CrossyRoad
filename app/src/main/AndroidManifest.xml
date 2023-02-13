@@ -12,7 +12,7 @@
         android:theme="@style/Theme.CrossyRoad"
         tools:targetApi="31">
         <activity
-            android:name=".configscreen"
+            android:name=".ConfigScreen"
             android:exported="false" />
         <activity
             android:name=".GameScreen"
