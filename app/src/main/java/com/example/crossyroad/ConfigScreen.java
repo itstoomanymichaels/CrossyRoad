@@ -39,18 +39,17 @@ public class ConfigScreen extends AppCompatActivity {
                 } else if (sprites.getCheckedRadioButtonId() == -1) { // no sprite selected
                     error.setText("Character must be selected!");
                     error.setVisibility(View.VISIBLE);
-                }
-               else { // launch GameScreen
-                   //makes parts to grab from ConfigScreen to GameScreen
+                } else { // launch GameScreen
+                    //makes parts to grab from ConfigScreen to GameScreen
                     Intent intent = new Intent(ConfigScreen.this, GameScreen.class);
                     intent.putExtra("name", name.getText().toString());
-                    String diff = ((RadioButton)findViewById(difficulty.getCheckedRadioButtonId()))
+                    String diff = ((RadioButton) findViewById(difficulty.getCheckedRadioButtonId()))
                             .getText().toString();
                     intent.putExtra("difficulty", diff);
                     int selectedSprite = 0;
-                    if (((RadioButton)findViewById(R.id.sprite1)).isChecked()) {
+                    if (((RadioButton) findViewById(R.id.sprite1)).isChecked()) {
                         intent.putExtra("sprite", 1);
-                    } else if (((RadioButton)findViewById(R.id.sprite2)).isChecked()) {
+                    } else if (((RadioButton) findViewById(R.id.sprite2)).isChecked()) {
                         intent.putExtra("sprite", 2);
                     } else {
                         intent.putExtra("sprite", 3);
