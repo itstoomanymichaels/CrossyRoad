@@ -20,5 +20,13 @@ public class GameScreen extends AppCompatActivity {
         player.setText("Player: " + extras.getString("name"));
         difficulty.setText("Difficulty: " + extras.getString("difficulty"));
 
+        if (extras.getString("difficulty").equals("Easy")) {
+            life.setText("Life: 5");
+        } else if (extras.getString("difficulty").equals("Medium")) {
+            life.setText("Life: 4");
+        } else if (extras.getString("difficulty").equals("Hard")) {
+            life.setText("Life: 3");
+        }
+
     }
 }
