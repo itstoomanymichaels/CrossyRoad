@@ -46,7 +46,7 @@ public class configscreen extends AppCompatActivity {
                     error.setVisibility(View.VISIBLE);
                 }
                 else { // launch gamescreen
-                    Intent intent = new Intent(configscreen.this, gamescreen.class);
+                    Intent intent = new Intent(configscreen.this, GameScreen.class);
                     startActivity(intent);
                 }
             }
