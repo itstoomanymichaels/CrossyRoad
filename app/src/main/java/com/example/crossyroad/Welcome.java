@@ -20,7 +20,7 @@ public class Welcome extends AppCompatActivity {
 
 
     public void goConfigScreen(View view) {
-        Intent configScreen = new Intent(this, configscreen.class);
+        Intent configScreen = new Intent(this, ConfigScreen.class);
         startActivity(configScreen);
     }
 }
