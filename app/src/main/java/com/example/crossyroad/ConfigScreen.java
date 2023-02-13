@@ -48,8 +48,14 @@ public class ConfigScreen extends AppCompatActivity {
                     String diff = ((RadioButton)findViewById(difficulty.getCheckedRadioButtonId()))
                             .getText().toString();
                     intent.putExtra("difficulty", diff);
-                    int selectedSprite = sprites.getCheckedRadioButtonId();
-                    intent.putExtra("sprite", selectedSprite);
+                    int selectedSprite = 0;
+                    if (((RadioButton)findViewById(R.id.sprite1)).isChecked()) {
+                        intent.putExtra("sprite", 1);
+                    } else if (((RadioButton)findViewById(R.id.sprite2)).isChecked()) {
+                        intent.putExtra("sprite", 2);
+                    } else {
+                        intent.putExtra("sprite", 3);
+                    }
                     startActivity(intent);
                 }
             }

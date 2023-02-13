@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameScreen extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         Bundle extras = getIntent().getExtras();
+        ImageView sprite = findViewById(R.id.imageView3);
         TextView life = findViewById(R.id.textView8);
         TextView difficulty = findViewById(R.id.textView9);
         TextView player = findViewById(R.id.textView4);
@@ -26,6 +28,13 @@ public class GameScreen extends AppCompatActivity {
             life.setText("Life: 4");
         } else if (extras.getString("difficulty").equals("Hard")) {
             life.setText("Life: 3");
+        }
+        if (extras.getInt("sprite") == 1) {
+            sprite.setImageResource(R.drawable.forg);
+        } else if (extras.getInt("sprite") == 2) {
+            sprite.setImageResource(R.drawable.forg2);
+        } else if (extras.getInt("sprite") == 3) {
+            sprite.setImageResource(R.drawable.forg3);
         }
 
     }
