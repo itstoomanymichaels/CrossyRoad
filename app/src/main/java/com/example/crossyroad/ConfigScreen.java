@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -44,8 +45,9 @@ public class ConfigScreen extends AppCompatActivity {
                    //makes parts to grab from ConfigScreen to GameScreen
                     Intent intent = new Intent(ConfigScreen.this, GameScreen.class);
                     intent.putExtra("name", name.getText().toString());
-                    int selectedDiff = difficulty.getCheckedRadioButtonId();
-                    intent.putExtra("difficulty", selectedDiff);
+                    String diff = ((RadioButton)findViewById(difficulty.getCheckedRadioButtonId()))
+                            .getText().toString();
+                    intent.putExtra("difficulty", diff);
                     int selectedSprite = sprites.getCheckedRadioButtonId();
                     intent.putExtra("sprite", selectedSprite);
                     startActivity(intent);
