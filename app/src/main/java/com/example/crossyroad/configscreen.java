@@ -45,7 +45,7 @@ public class configscreen extends AppCompatActivity {
                     error.setText("Character must be selected!");
                     error.setVisibility(View.VISIBLE);
                 }
-                else { // launch gamescreen
+                else { // launch GameScreen
                     Intent intent = new Intent(configscreen.this, GameScreen.class);
                     startActivity(intent);
                 }
