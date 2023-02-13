@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,13 @@ public class configscreen extends AppCompatActivity {
                     error.setVisibility(View.VISIBLE);
                 }
                 else { // launch GameScreen
+                    //makes parts to push onto gamescreen
                     Intent intent = new Intent(configscreen.this, GameScreen.class);
+                    intent.putExtra("name", name.getText().toString());
+                    int selectedDiff = difficulty.getCheckedRadioButtonId();
+                    intent.putExtra("difficulty", selectedDiff);
+                    int selectedSprite = sprites.getCheckedRadioButtonId();
+                    intent.putExtra("sprite", selectedSprite);
                     startActivity(intent);
                 }
             }
