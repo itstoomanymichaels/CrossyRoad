@@ -14,10 +14,12 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         Bundle extras = getIntent().getExtras();
-        ImageView sprite = findViewById(R.id.imageView3);
-        TextView life = findViewById(R.id.textView8);
-        TextView difficulty = findViewById(R.id.textView9);
-        TextView player = findViewById(R.id.textView4);
+        ImageView sprite = findViewById(R.id.player_sprite);
+        TextView life = findViewById(R.id.life);
+        TextView difficulty = findViewById(R.id.difficulty);
+        TextView player = findViewById(R.id.name);
+        TextView score = findViewById(R.id.score);
+        score.setText("Score: 0");
         player.setText("Player: " + extras.getString("name"));
         difficulty.setText("Difficulty: " + extras.getString("difficulty"));
 
