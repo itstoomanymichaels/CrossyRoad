@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 public class GameScreen extends AppCompatActivity {
 
@@ -14,7 +15,8 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         Bundle extras = getIntent().getExtras();
-        ImageView sprite = findViewById(R.id.player_sprite);
+        LinearLayout game_sc = findViewById(R.id.game_window);
+        //ImageView sprite = findViewById(R.id.player_sprite);
         TextView life = findViewById(R.id.life);
         TextView difficulty = findViewById(R.id.difficulty);
         TextView player = findViewById(R.id.name);
@@ -30,13 +32,13 @@ public class GameScreen extends AppCompatActivity {
         } else if (extras.getString("difficulty").equals("Hard")) {
             life.setText("Life: 3");
         }
-        if (extras.getInt("sprite") == 1) {
-            sprite.setImageResource(R.drawable.forg);
-        } else if (extras.getInt("sprite") == 2) {
-            sprite.setImageResource(R.drawable.forg2);
-        } else if (extras.getInt("sprite") == 3) {
-            sprite.setImageResource(R.drawable.forg3);
-        }
-
+        //if (extras.getInt("sprite") == 1) {
+          //  sprite.setImageResource(R.drawable.forg);
+        //} else if (extras.getInt("sprite") == 2) {
+          //  sprite.setImageResource(R.drawable.forg2);
+        //} else if (extras.getInt("sprite") == 3) {
+          //  sprite.setImageResource(R.drawable.forg3);
+//        }
+//
     }
 }
