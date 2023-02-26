@@ -44,13 +44,8 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         playerName.setText("Player: " + extras.getString("name"));
         difficulty.setText("Difficulty: " + extras.getString("difficulty"));
 
-        if (extras.getString("difficulty").equals("Easy")) {
-            life.setText("Life: 5");
-        } else if (extras.getString("difficulty").equals("Medium")) {
-            life.setText("Life: 4");
-        } else if (extras.getString("difficulty").equals("Hard")) {
-            life.setText("Life: 3");
-        }
+        String difficultyLife = Integer.toString(SetLifeByDifficulty(extras.getString("difficulty")));
+        life.setText("Life: " + difficultyLife);
 
         if (extras.getInt("sprite") == 1) {
             sprite.setImageResource(R.drawable.forg);
@@ -71,21 +66,32 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    public void moveRight() {
+    public int SetLifeByDifficulty(String difficulty) {
+        if (difficulty.equals("Easy")) {
+            return 5;
+        } else if (difficulty.equals("Medium")) {
+            return 4;
+        } else if (difficulty.equals("Hard")) {
+            return 3;
+        } else {
+            return -1;
+        }
+    }
+    private void moveRight() {
         sprite.setX(sprite.getX() + oneMove);
         if (sprite.getX() > gameScreen.getWidth() - sprite.getWidth()) {
             sprite.setX(gameScreen.getWidth() - sprite.getWidth());
         }
     }
 
-    public void moveLeft() {
+    private void moveLeft() {
         sprite.setX(sprite.getX() - oneMove);
         if (sprite.getX() < 0) {
             sprite.setX(0);
         }
     }
 
-    public void moveUp() {
+    private void moveUp() {
         sprite.setY(sprite.getY() - oneMove);
         if (sprite.getY() < 0) {
             sprite.setY(0);
