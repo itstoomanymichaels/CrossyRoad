@@ -109,6 +109,10 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         return y + 50;
     }
 
+    public int downPos(int y) {
+        return y - 50;
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.right:
@@ -178,5 +182,13 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
             return gestureDetector.onTouchEvent(motionEvent);
         }
 
+    }
+
+    public boolean testBounds(int x, int y) {
+        if ((y < 0) || (y > gameScreen.getHeight() - sprite.getHeight()) || (x < 0) || (x > gameScreen.getWidth() - sprite.getWidth())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
