@@ -1,14 +1,18 @@
 package com.example.crossyroad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class GameScreen extends AppCompatActivity implements View.OnClickListener{
+public class GameScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView sprite;
     private int one_move = 50;
@@ -17,6 +21,10 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
     private TextView player_name;
     private TextView score;
     private FrameLayout game_screen;
+
+    //slide use
+    RelativeLayout relativeLayout;
+    SwipeListener swipeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,10 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         findViewById(R.id.left).setOnClickListener(this);
         findViewById(R.id.up).setOnClickListener(this);
         findViewById(R.id.down).setOnClickListener(this);
+
+        //swipe use
+        relativeLayout = findViewById(R.id.relative_layout);
+        swipeListener = new SwipeListener(relativeLayout);
 
     }
 
@@ -100,7 +112,55 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
                 moveDown();
                 break;
         }
+    }
 
+    private class SwipeListener implements View.OnTouchListener{
+        GestureDetector gestureDetector;
+
+        SwipeListener(View view){
+            int threshold = 100;
+            int velocity_threshold = 100;
+            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onDown(@NonNull MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+                    try {
+                        float diffY = e2.getY() - e1.getY();
+                        float diffX = e2.getX() - e1.getX();
+                        if (Math.abs(diffX) > Math.abs(diffY)) {
+                            if (Math.abs(diffX) > threshold && Math.abs(velocityX) > velocity_threshold) {
+                                if (diffX > 0) {
+                                    moveRight();
+                                } else {
+                                    moveLeft();
+                                }
+                            }
+                        } else {
+                            if (Math.abs(diffY) > threshold && Math.abs(velocityY) > velocity_threshold) {
+                                if (diffY > 0) {
+                                    moveDown();
+                                } else {
+                                    moveUp();
+                                }
+                            }
+                        }
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                    return false;
+                }
+            };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent){
+            return gestureDetector.onTouchEvent(motionEvent);
+        }
 
     }
 }
