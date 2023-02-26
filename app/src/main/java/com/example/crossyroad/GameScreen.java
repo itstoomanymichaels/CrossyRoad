@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 public class GameScreen extends AppCompatActivity implements View.OnClickListener{
 
@@ -25,7 +27,30 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
         Bundle extras = getIntent().getExtras();
 
+        int y = 0;
+        int height = 0;
         game_screen = findViewById(R.id.game_window);
+
+        //TextView goal = findViewById(R.id.goal);
+        //goal.setY(0);
+
+        //ViewGroup.LayoutParams params = goal.getLayoutParams();
+        //params.height = game_screen.getHeight();
+        //goal.setLayoutParams(params);
+
+        //TextView river = findViewById(R.id.river);
+        //river.setY(y);
+        //river.setHeight((int) (game_screen.getHeight() * 0.3));
+        //y += (int) (game_screen.getHeight() * 0.3);
+
+        //TextView safe = findViewById(R.id.safe);
+        //safe.setY(y);
+
+        //TextView road = findViewById(R.id.road);
+        //road.setY(y);
+
+        //TextView start = findViewById(R.id.start);
+        //start.setY(y);
 
         sprite = findViewById(R.id.sprite);
         life = findViewById(R.id.life);
