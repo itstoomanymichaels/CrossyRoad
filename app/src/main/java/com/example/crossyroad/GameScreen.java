@@ -15,12 +15,12 @@ import android.widget.TextView;
 public class GameScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView sprite;
-    private int one_move = 50;
+    private int oneMove = 50;
     private TextView life;
     private TextView difficulty;
-    private TextView player_name;
+    private TextView playerName;
     private TextView score;
-    private FrameLayout game_screen;
+    private FrameLayout gameScreen;
 
     //slide use
     RelativeLayout relativeLayout;
@@ -33,16 +33,15 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
         Bundle extras = getIntent().getExtras();
 
-        game_screen = findViewById(R.id.game_window);
-
+        gameScreen = findViewById(R.id.game_window);
         sprite = findViewById(R.id.sprite);
         life = findViewById(R.id.life);
         difficulty = findViewById(R.id.difficulty);
-        player_name = findViewById(R.id.name);
+        playerName = findViewById(R.id.name);
         score = findViewById(R.id.score);
 
         score.setText("Score: 0");
-        player_name.setText("Player: " + extras.getString("name"));
+        playerName.setText("Player: " + extras.getString("name"));
         difficulty.setText("Difficulty: " + extras.getString("difficulty"));
 
         if (extras.getString("difficulty").equals("Easy")) {
@@ -73,27 +72,30 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     public void moveRight() {
-        sprite.setX(sprite.getX() + one_move);
-        if (sprite.getX() > game_screen.getWidth() - sprite.getWidth()) {
-            sprite.setX(game_screen.getWidth() - sprite.getWidth());
+        sprite.setX(sprite.getX() + oneMove);
+        if (sprite.getX() > gameScreen.getWidth() - sprite.getWidth()) {
+            sprite.setX(gameScreen.getWidth() - sprite.getWidth());
         }
     }
+
     public void moveLeft() {
-        sprite.setX(sprite.getX() - one_move);
+        sprite.setX(sprite.getX() - oneMove);
         if (sprite.getX() < 0) {
             sprite.setX(0);
         }
     }
+
     public void moveUp() {
-        sprite.setY(sprite.getY() - one_move);
+        sprite.setY(sprite.getY() - oneMove);
         if (sprite.getY() < 0) {
             sprite.setY(0);
         }
     }
+
     public void moveDown() {
-        sprite.setY(sprite.getY() + one_move);
-        if (sprite.getY() > game_screen.getHeight() - sprite.getHeight()) {
-            sprite.setY(game_screen.getHeight() - sprite.getHeight());
+        sprite.setY(sprite.getY() + oneMove);
+        if (sprite.getY() > gameScreen.getHeight() - sprite.getHeight()) {
+            sprite.setY(gameScreen.getHeight() - sprite.getHeight());
         }
     }
 
@@ -111,13 +113,15 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
             case R.id.down:
                 moveDown();
                 break;
+            default:
+                break;
         }
     }
 
-    private class SwipeListener implements View.OnTouchListener{
+    private class SwipeListener implements View.OnTouchListener {
         GestureDetector gestureDetector;
 
-        SwipeListener(View view){
+        SwipeListener(View view) {
             int threshold = 100;
             int velocity_threshold = 100;
             GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
@@ -127,7 +131,8 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
                 }
 
                 @Override
-                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX,
+                        float velocityY) {
                     try {
                         float diffY = e2.getY() - e1.getY();
                         float diffX = e2.getX() - e1.getX();
@@ -157,8 +162,9 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
             gestureDetector = new GestureDetector(listener);
             view.setOnTouchListener(this);
         }
+
         @Override
-        public boolean onTouch(View view, MotionEvent motionEvent){
+        public boolean onTouch(View view, MotionEvent motionEvent) {
             return gestureDetector.onTouchEvent(motionEvent);
         }
 
