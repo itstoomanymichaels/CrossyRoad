@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class ConfigScreen extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() { // check if start button is clicked
             @Override
             public void onClick(View v) {
+                validName(name.getText().toString());
                 if (name.getText().length() == 0) { // check if no name entered
                     error.setText("Need to enter name first!");
                     error.setVisibility(View.VISIBLE);
@@ -58,5 +60,11 @@ public class ConfigScreen extends AppCompatActivity {
                 }
             }
         });
+    }
+    public boolean validName(String newName) {
+        if (newName.length() != 0) {
+            return true;
+        }
+        return false;
     }
 }
