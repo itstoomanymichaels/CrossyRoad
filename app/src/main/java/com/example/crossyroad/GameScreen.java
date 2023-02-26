@@ -4,21 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class GameScreen extends AppCompatActivity implements View.OnClickListener{
+public class GameScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView sprite;
-    private int one_move = 50;
+    private int oneMove = 50;
     private TextView life;
     private TextView difficulty;
-    private TextView player_name;
+    private TextView playerName;
     private TextView score;
-    private FrameLayout game_screen;
+    private FrameLayout gameScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,39 +26,15 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
 
         Bundle extras = getIntent().getExtras();
 
-        int y = 0;
-        int height = 0;
-        game_screen = findViewById(R.id.game_window);
-
-        //TextView goal = findViewById(R.id.goal);
-        //goal.setY(0);
-
-        //ViewGroup.LayoutParams params = goal.getLayoutParams();
-        //params.height = game_screen.getHeight();
-        //goal.setLayoutParams(params);
-
-        //TextView river = findViewById(R.id.river);
-        //river.setY(y);
-        //river.setHeight((int) (game_screen.getHeight() * 0.3));
-        //y += (int) (game_screen.getHeight() * 0.3);
-
-        //TextView safe = findViewById(R.id.safe);
-        //safe.setY(y);
-
-        //TextView road = findViewById(R.id.road);
-        //road.setY(y);
-
-        //TextView start = findViewById(R.id.start);
-        //start.setY(y);
-
+        gameScreen = findViewById(R.id.game_window);
         sprite = findViewById(R.id.sprite);
         life = findViewById(R.id.life);
         difficulty = findViewById(R.id.difficulty);
-        player_name = findViewById(R.id.name);
+        playerName = findViewById(R.id.name);
         score = findViewById(R.id.score);
 
         score.setText("Score: 0");
-        player_name.setText("Player: " + extras.getString("name"));
+        playerName.setText("Player: " + extras.getString("name"));
         difficulty.setText("Difficulty: " + extras.getString("difficulty"));
 
         if (extras.getString("difficulty").equals("Easy")) {
@@ -86,44 +61,46 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     public void moveRight() {
-        sprite.setX(sprite.getX() + one_move);
-        if (sprite.getX() > game_screen.getWidth() - sprite.getWidth()) {
-            sprite.setX(game_screen.getWidth() - sprite.getWidth());
+        sprite.setX(sprite.getX() + oneMove);
+        if (sprite.getX() > gameScreen.getWidth() - sprite.getWidth()) {
+            sprite.setX(gameScreen.getWidth() - sprite.getWidth());
         }
     }
     public void moveLeft() {
-        sprite.setX(sprite.getX() - one_move);
+        sprite.setX(sprite.getX() - oneMove);
         if (sprite.getX() < 0) {
             sprite.setX(0);
         }
     }
     public void moveUp() {
-        sprite.setY(sprite.getY() - one_move);
+        sprite.setY(sprite.getY() - oneMove);
         if (sprite.getY() < 0) {
             sprite.setY(0);
         }
     }
     public void moveDown() {
-        sprite.setY(sprite.getY() + one_move);
-        if (sprite.getY() > game_screen.getHeight() - sprite.getHeight()) {
-            sprite.setY(game_screen.getHeight() - sprite.getHeight());
+        sprite.setY(sprite.getY() + oneMove);
+        if (sprite.getY() > gameScreen.getHeight() - sprite.getHeight()) {
+            sprite.setY(gameScreen.getHeight() - sprite.getHeight());
         }
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.right:
-                moveRight();
-                break;
-            case R.id.left:
-                moveLeft();
-                break;
-            case R.id.up:
-                moveUp();
-                break;
-            case R.id.down:
-                moveDown();
-                break;
+        case R.id.right:
+            moveRight();
+            break;
+        case R.id.left:
+            moveLeft();
+            break;
+        case R.id.up:
+            moveUp();
+            break;
+        case R.id.down:
+            moveDown();
+            break;
+        default:
+            break;
         }
 
 
