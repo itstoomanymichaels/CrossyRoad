@@ -105,6 +105,10 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    public int upPos(int y) {
+        return y + 50;
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.right:
