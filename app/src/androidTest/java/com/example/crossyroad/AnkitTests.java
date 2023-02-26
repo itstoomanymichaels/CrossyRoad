@@ -18,16 +18,28 @@ import org.mockito.Mockito;
 @RunWith(AndroidJUnit4.class)
 public class AnkitTests {
     private GameScreen gs;
+    private ConfigScreen cs;
 
     @Before
     public void setUp() {
         // Create a mock object
         gs = mock(GameScreen.class);
+        cs = mock(ConfigScreen.class);
+
     }
 
     @Test
-    public void testLifeByDifficulty() {
+    //checks if difficulty is selected.
+    public void ValidDifficulty() {
+        Mockito.when(cs.DifficultyIsSelected(-1)).thenReturn(false);
+        assertEquals(false, cs.DifficultyIsSelected(-1));
 
+        Mockito.when(cs.DifficultyIsSelected(1)).thenReturn(true);
+        assertEquals(true, cs.DifficultyIsSelected(1));
+    }
+    @Test
+    //checks if life changes with difficulty.
+    public void testLifeByDifficulty() {
         //run Mockito tests
         Mockito.when(gs.SetLifeByDifficulty("Easy")).thenReturn(5);
         assertEquals(5, gs.SetLifeByDifficulty("Easy"));
@@ -40,6 +52,5 @@ public class AnkitTests {
 
         Mockito.when(gs.SetLifeByDifficulty("")).thenReturn(-1);
         assertEquals(-1, gs.SetLifeByDifficulty(""));
-
     }
 }
