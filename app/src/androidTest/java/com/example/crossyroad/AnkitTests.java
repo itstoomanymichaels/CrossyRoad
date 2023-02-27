@@ -16,11 +16,14 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class DifficultyTest {
+public class AnkitTests {
+    private GameScreen gs;
     private ConfigScreen cs;
 
     @Before
     public void setUp() {
+        // Create a mock object
+        gs = mock(GameScreen.class);
         cs = mock(ConfigScreen.class);
 
     }
@@ -34,5 +37,20 @@ public class DifficultyTest {
         Mockito.when(cs.DifficultyIsSelected(1)).thenReturn(true);
         assertEquals(true, cs.DifficultyIsSelected(1));
     }
+    @Test
+    //checks if life changes with difficulty.
+    public void testLifeByDifficulty() {
+        //run Mockito tests
+        Mockito.when(gs.SetLifeByDifficulty("Easy")).thenReturn(5);
+        assertEquals(5, gs.SetLifeByDifficulty("Easy"));
 
+        Mockito.when(gs.SetLifeByDifficulty("Medium")).thenReturn(4);
+        assertEquals(4, gs.SetLifeByDifficulty("Medium"));
+
+        Mockito.when(gs.SetLifeByDifficulty("Hard")).thenReturn(3);
+        assertEquals(3, gs.SetLifeByDifficulty("Hard"));
+
+        Mockito.when(gs.SetLifeByDifficulty("")).thenReturn(-1);
+        assertEquals(-1, gs.SetLifeByDifficulty(""));
+    }
 }
