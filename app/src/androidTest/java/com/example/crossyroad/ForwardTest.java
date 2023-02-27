@@ -28,12 +28,12 @@ public class ForwardTest {
     @Test
     public void testNames() {
 
-        int y = 0;
+        float y = 75;
 
-        int oneMove = 50;
+        float oneMove = 25;
 
         //run Mockito tests
-        Mockito.when(gs.upPos(y)).thenReturn(y + oneMove);
-        assertEquals(50, gs.upPos(y));
+        Mockito.when(gs.upPos(y)).thenReturn(y - oneMove);
+        assertEquals(50, gs.upPos(y), 0.1);
     }
 }

@@ -16,7 +16,7 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class DownTest {
+public class LeftTest {
     private GameScreen gs;
 
     @Before
@@ -28,12 +28,12 @@ public class DownTest {
     @Test
     public void testNames() {
 
-        float y = 0;
+        float x = 75;
 
         float oneMove = 50;
 
         //run Mockito tests
-        Mockito.when(gs.downPos(y)).thenReturn(y + oneMove);
-        assertEquals(50, gs.downPos(y), 0.1);
+        Mockito.when(gs.leftPos(x)).thenReturn(x - oneMove);
+        assertEquals(25, gs.leftPos(x), 0.1);
     }
 }

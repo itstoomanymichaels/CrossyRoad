@@ -31,10 +31,10 @@ public class TestBounds {
         int exampleWidth = 100;
         //run Mockito tests
         Mockito.when(gs.testBounds(exampleWidth, exampleHeight)).thenReturn(true);
-        assertEquals(true, gs.testBounds());
+        assertEquals(true, gs.testBounds(exampleWidth, exampleHeight));
 
         Mockito.when(gs.testBounds(0,0)).thenReturn(false);
-        assertEquals(false, gs.testBounds());
+        assertEquals(false, gs.testBounds(0,0));
 
     }
 }

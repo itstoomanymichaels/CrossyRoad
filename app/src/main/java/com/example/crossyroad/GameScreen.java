@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class GameScreen extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView sprite;
-    private int oneMove = 50;
+    private final float oneMove = 50;
     private TextView life;
     private TextView difficulty;
     private TextView playerName;
@@ -78,39 +78,47 @@ public class GameScreen extends AppCompatActivity implements View.OnClickListene
         }
     }
     private void moveRight() {
-        sprite.setX(sprite.getX() + oneMove);
+        sprite.setX(rightPos(sprite.getX()));
         if (sprite.getX() > gameScreen.getWidth() - sprite.getWidth()) {
             sprite.setX(gameScreen.getWidth() - sprite.getWidth());
         }
     }
 
     private void moveLeft() {
-        sprite.setX(sprite.getX() - oneMove);
+        sprite.setX(leftPos(sprite.getX()));
         if (sprite.getX() < 0) {
             sprite.setX(0);
         }
     }
 
     private void moveUp() {
-        sprite.setY(sprite.getY() - oneMove);
+        sprite.setY(upPos(sprite.getY()));
         if (sprite.getY() < 0) {
             sprite.setY(0);
         }
     }
 
     public void moveDown() {
-        sprite.setY(sprite.getY() + oneMove);
+        sprite.setY(downPos(sprite.getY()));
         if (sprite.getY() > gameScreen.getHeight() - sprite.getHeight()) {
             sprite.setY(gameScreen.getHeight() - sprite.getHeight());
         }
     }
 
-    public int upPos(int y) {
-        return y + 50;
+    public float upPos(float y) {
+        return y - oneMove;
     }
 
-    public int downPos(int y) {
-        return y - 50;
+    public float downPos(float y) {
+        return y + oneMove;
+    }
+
+    public float leftPos(float x) {
+        return x - oneMove;
+    }
+
+    public float rightPos(float x) {
+        return x + oneMove;
     }
 
     public void onClick(View view) {
