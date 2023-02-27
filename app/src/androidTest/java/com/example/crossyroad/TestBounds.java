@@ -16,7 +16,7 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ForwardTest {
+public class TestBounds {
     private GameScreen gs;
 
     @Before
@@ -26,14 +26,15 @@ public class ForwardTest {
     }
 
     @Test
-    public void testNames() {
-
-        float y = 75;
-
-        float oneMove = 25;
-
+    public void testBounds() {
+        int exampleHeight = 100;
+        int exampleWidth = 100;
         //run Mockito tests
-        Mockito.when(gs.upPos(y)).thenReturn(y - oneMove);
-        assertEquals(50, gs.upPos(y), 0.1);
+        Mockito.when(gs.testBounds(exampleWidth, exampleHeight)).thenReturn(true);
+        assertEquals(true, gs.testBounds(exampleWidth, exampleHeight));
+
+        Mockito.when(gs.testBounds(0,0)).thenReturn(false);
+        assertEquals(false, gs.testBounds(0,0));
+
     }
 }
