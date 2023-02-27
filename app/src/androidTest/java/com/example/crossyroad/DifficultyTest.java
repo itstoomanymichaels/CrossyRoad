@@ -28,12 +28,12 @@ public class DifficultyTest {
 
     @Test
     //checks if difficulty is selected.
-    public void ValidDifficulty() {
-        Mockito.when(cs.DifficultyIsSelected(-1)).thenReturn(false);
-        assertEquals(false, cs.DifficultyIsSelected(-1));
+    public void validDifficulty() {
+        Mockito.when(cs.difficultyIsSelected(-1)).thenReturn(false);
+        assertEquals(false, cs.difficultyIsSelected(-1));
 
-        Mockito.when(cs.DifficultyIsSelected(1)).thenReturn(true);
-        assertEquals(true, cs.DifficultyIsSelected(1));
+        Mockito.when(cs.difficultyIsSelected(1)).thenReturn(true);
+        assertEquals(true, cs.difficultyIsSelected(1));
     }
 
 }

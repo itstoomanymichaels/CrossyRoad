@@ -30,17 +30,17 @@ public class LifeTest {
     //checks if life changes with difficulty.
     public void testLifeByDifficulty() {
         //run Mockito tests
-        Mockito.when(gs.SetLifeByDifficulty("Easy")).thenReturn(5);
-        assertEquals(5, gs.SetLifeByDifficulty("Easy"));
+        Mockito.when(gs.setLifeByDifficulty("Easy")).thenReturn(5);
+        assertEquals(5, gs.setLifeByDifficulty("Easy"));
 
-        Mockito.when(gs.SetLifeByDifficulty("Medium")).thenReturn(4);
-        assertEquals(4, gs.SetLifeByDifficulty("Medium"));
+        Mockito.when(gs.setLifeByDifficulty("Medium")).thenReturn(4);
+        assertEquals(4, gs.setLifeByDifficulty("Medium"));
 
-        Mockito.when(gs.SetLifeByDifficulty("Hard")).thenReturn(3);
-        assertEquals(3, gs.SetLifeByDifficulty("Hard"));
+        Mockito.when(gs.setLifeByDifficulty("Hard")).thenReturn(3);
+        assertEquals(3, gs.setLifeByDifficulty("Hard"));
 
-        Mockito.when(gs.SetLifeByDifficulty("")).thenReturn(-1);
-        assertEquals(-1, gs.SetLifeByDifficulty(""));
+        Mockito.when(gs.setLifeByDifficulty("")).thenReturn(-1);
+        assertEquals(-1, gs.setLifeByDifficulty(""));
     }
 }
 
