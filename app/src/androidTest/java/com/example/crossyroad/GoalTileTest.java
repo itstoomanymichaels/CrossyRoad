@@ -15,7 +15,7 @@ public class GoalTileTest {
         // Obtain a reference to the app's context
         Context context = ApplicationProvider.getApplicationContext();
 
-        // Check if the "GoalTile" ID exists in the layout file
-        assertNotNull("GoalTile ID not found in activity_game_screen layout file", context.getResources().getIdentifier("GoalTile", "id", context.getPackageName()));
+        // Check if the "goal" ID exists in the layout file
+        assertNotNull("goal ID not found in activity_game_screen layout file", context.getResources().getIdentifier("goal", "id", context.getPackageName()));
     }
 }

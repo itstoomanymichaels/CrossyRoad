@@ -15,7 +15,7 @@ public class SafeTileTest {
         // Obtain a reference to the app's context
         Context context = ApplicationProvider.getApplicationContext();
 
-        // Check if the "SafeTile" ID exists in the layout file
-        assertNotNull("SafeTile ID not found in activity_game_screen layout file", context.getResources().getIdentifier("SafeTile", "id", context.getPackageName()));
+        // Check if the "safe" ID exists in the layout file
+        assertNotNull("safe ID not found in activity_game_screen layout file", context.getResources().getIdentifier("safe", "id", context.getPackageName()));
     }
 }
