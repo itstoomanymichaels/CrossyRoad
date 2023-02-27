@@ -17,11 +17,12 @@ public class ConfigScreen extends AppCompatActivity {
     private Button start;
     private EditText name;
     private TextView error;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configscreen);
-        difficulty = (RadioGroup) findViewById(R.id.difficulty); // identify difficulty RadioGroup
+        difficulty = findViewById(R.id.difficulty); // identify difficulty RadioGroup
         start = findViewById(R.id.start); // identify start button
         name = findViewById(R.id.name); // identify name text field
         error = findViewById(R.id.error); // identify error message
@@ -30,23 +31,26 @@ public class ConfigScreen extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() { // check if start button is clicked
             @Override
             public void onClick(View v) {
-                if (name.getText().length() == 0) { // check if no name entered
+                validName(name.getText().toString());
+                if (!validName(name.getText().toString())) { // check if no name entered
                     error.setText("Need to enter name first!");
                     error.setVisibility(View.VISIBLE);
-                } else if (difficulty.getCheckedRadioButtonId() == -1) { // no difficulty selected
+                } else if (!difficultyIsSelected(difficulty.getCheckedRadioButtonId())) {
+                    // no difficulty selected
                     error.setText("Difficulty must be selected!");
                     error.setVisibility(View.VISIBLE);
-                } else if (sprites.getCheckedRadioButtonId() == -1) { // no sprite selected
+                } else if (!spriteIsSelected(sprites.getCheckedRadioButtonId())) {
+                    // no sprite selected
                     error.setText("Character must be selected!");
                     error.setVisibility(View.VISIBLE);
                 } else { // launch GameScreen
                     //makes parts to grab from ConfigScreen to GameScreen
-                    Intent intent = new Intent(ConfigScreen.this, GameScreen.class);
+                    error.setVisibility(View.INVISIBLE);
+                    intent = new Intent(ConfigScreen.this, GameScreen.class);
                     intent.putExtra("name", name.getText().toString());
                     String diff = ((RadioButton) findViewById(difficulty.getCheckedRadioButtonId()))
                             .getText().toString();
                     intent.putExtra("difficulty", diff);
-                    int selectedSprite = 0;
                     if (((RadioButton) findViewById(R.id.sprite1)).isChecked()) {
                         intent.putExtra("sprite", 1);
                     } else if (((RadioButton) findViewById(R.id.sprite2)).isChecked()) {
@@ -59,4 +63,18 @@ public class ConfigScreen extends AppCompatActivity {
             }
         });
     }
+
+    public boolean difficultyIsSelected(int d) {
+        return (d != -1);
+    }
+    public boolean validName(String newName) {
+        return (newName.length() != 0);
+    }
+    public boolean spriteIsSelected(int s) {
+        return (s != -1);
+    }
+    public int selectedSprite() {
+        return intent.getIntExtra("sprite", -1);
+    }
+
 }

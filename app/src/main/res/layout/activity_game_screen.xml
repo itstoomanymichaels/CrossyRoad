@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relative_layout"
     android:background="#000000"
     tools:context=".GameScreen">
 
@@ -20,19 +21,17 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:paddingLeft="10dp"
-                android:text="TextView"
                 android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/life"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="TextView"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
@@ -45,71 +44,154 @@
 
             <TextView
                 android:id="@+id/difficulty"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:paddingLeft="10dp"
-                android:text="TextView"
                 android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/score"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:text="Score"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/game_window"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="#205922"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_weight="29"
+            >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="12"
-            android:background="#050D3A"
-            android:orientation="horizontal"></LinearLayout>
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="#5B0FE1"
-            android:orientation="horizontal"></LinearLayout>
+            <TextView
+                android:id="@+id/road"
+                android:layout_width="match_parent"
+                android:layout_height="486dp"
+                android:background="#000000" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"></LinearLayout>
+            <TextView
+                android:id="@+id/safe"
+                android:layout_width="match_parent"
+                android:layout_height="307dp"
+                android:background="#00BBAA" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="#442778"
-            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/river"
+                android:layout_width="match_parent"
+                android:layout_height="276dp"
+                android:background="#0000FF" />
+
+            <TextView
+                android:id="@+id/goal"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#00FF00" />
+
 
             <ImageView
-                android:id="@+id/player_sprite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/forg" />
-        </LinearLayout>
+                android:id="@+id/sprite"
+                android:layout_gravity="bottom|center"
+                android:layout_width="40dp"
+                android:layout_height="44dp"
+                app:srcCompat="@drawable/sprite" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_weight="5.5"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="TextView" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#850909"
+                android:paddingBottom="2dp"
+                android:text="L"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2.5dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#850909"
+                        android:text="U"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingTop="2.5dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/down"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#850909"
+                        android:text="D"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#850909"
+                android:text="R"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="TextView" />
+        </LinearLayout>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
