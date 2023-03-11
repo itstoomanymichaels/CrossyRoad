@@ -13,11 +13,8 @@ public class Frog {
 
     public int x, y, width, height;
     Bitmap frog;
-    private GameView gameView;
 
-    Frog(GameView gameView, int screenY, int screenX, Resources res, int sprite) {
-
-        this.gameView = gameView;
+    Frog(int screenY, int screenX, Resources res, int sprite) {
 
         frog = BitmapFactory.decodeResource(res, R.drawable.frog);
 
