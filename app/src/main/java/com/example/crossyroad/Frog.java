@@ -1,4 +1,6 @@
+
 package com.example.crossyroad;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,25 +15,24 @@ public class Frog {
     Bitmap frog;
     private GameView gameView;
 
-    Frog (GameView gameView, int screenY, int screenX, Resources res, int sprite) {
+    Frog(GameView gameView, int screenY, int screenX, Resources res, int sprite) {
 
         this.gameView = gameView;
 
-        frog = BitmapFactory.decodeResource(res, R.drawable.forg);
+        frog = BitmapFactory.decodeResource(res, R.drawable.frog);
 
-        width = frog.getWidth();
-        height = frog.getHeight();
-
-        width /= 4;
-        height /= 4;
+        width = 2 * screenY / 36 - 30;
+        height = 2 * screenY / 36 - 30;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
-        y = screenY-frog.getHeight();
-        x = screenX / 2;
+        y = screenY - height - 15;
+        x = screenX / 2 - width / 2;
 
     }
+
     Bitmap getFrog () {
         return frog;
     }
 
+    >>>>>>>7d 67620f 9656 a7281fad6ae4323c5ad792b2ca31
 }

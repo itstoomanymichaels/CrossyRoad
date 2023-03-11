@@ -1,3 +1,4 @@
+
 package com.example.crossyroad;
 
 import android.content.Context;
@@ -136,10 +137,16 @@ public class GameView extends SurfaceView implements Runnable {
              **/
 
 
-            paint.setColor(Color.CYAN);
-            canvas.drawRect(33, 60, 77, 77, paint );
-            paint.setColor(Color.YELLOW);
-            canvas.drawRect(33, 33, 77, 60, paint );
+            paint.setColor(Color.parseColor("#3CB371"));
+            canvas.drawRect(0, 3*screenY/36, screenX, 6*screenY/36, paint );
+            paint.setColor(Color.parseColor("#4682B4"));
+            canvas.drawRect(0, 6*screenY/36, screenX, 20*screenY/36, paint );
+            paint.setColor(Color.parseColor("#D2B48C"));
+            canvas.drawRect(0, 20*screenY/36, screenX, 22*screenY/36, paint );
+            paint.setColor(Color.parseColor("#778899"));
+            canvas.drawRect(0, 22*screenY/36, screenX, 34*screenY/36, paint );
+            paint.setColor(Color.parseColor("#BDB76B"));
+            canvas.drawRect(0, 34*screenY/36, screenX, screenY, paint );
 
             if (isGameOver) {
                 isPlaying = false;
