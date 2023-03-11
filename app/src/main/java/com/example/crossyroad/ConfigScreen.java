@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +17,7 @@ public class ConfigScreen extends AppCompatActivity {
     private Button start;
     private EditText name;
     private TextView error;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,21 +35,22 @@ public class ConfigScreen extends AppCompatActivity {
                 if (!validName(name.getText().toString())) { // check if no name entered
                     error.setText("Need to enter name first!");
                     error.setVisibility(View.VISIBLE);
-                } else if (!DifficultyIsSelected(difficulty.getCheckedRadioButtonId())) { // no difficulty selected
+                } else if (!difficultyIsSelected(difficulty.getCheckedRadioButtonId())) {
+                    // no difficulty selected
                     error.setText("Difficulty must be selected!");
                     error.setVisibility(View.VISIBLE);
-                } else if (sprites.getCheckedRadioButtonId() == -1) { // no sprite selected
+                } else if (!spriteIsSelected(sprites.getCheckedRadioButtonId())) {
+                    // no sprite selected
                     error.setText("Character must be selected!");
                     error.setVisibility(View.VISIBLE);
                 } else { // launch GameScreen
                     //makes parts to grab from ConfigScreen to GameScreen
                     error.setVisibility(View.INVISIBLE);
-                    Intent intent = new Intent(ConfigScreen.this, GameScreen.class);
+                    intent = new Intent(ConfigScreen.this, GameScreen.class);
                     intent.putExtra("name", name.getText().toString());
                     String diff = ((RadioButton) findViewById(difficulty.getCheckedRadioButtonId()))
                             .getText().toString();
                     intent.putExtra("difficulty", diff);
-                    int selectedSprite = 0;
                     if (((RadioButton) findViewById(R.id.sprite1)).isChecked()) {
                         intent.putExtra("sprite", 1);
                     } else if (((RadioButton) findViewById(R.id.sprite2)).isChecked()) {
@@ -63,10 +64,17 @@ public class ConfigScreen extends AppCompatActivity {
         });
     }
 
-    public boolean DifficultyIsSelected(int d) {
+    public boolean difficultyIsSelected(int d) {
         return (d != -1);
     }
     public boolean validName(String newName) {
         return (newName.length() != 0);
     }
+    public boolean spriteIsSelected(int s) {
+        return (s != -1);
+    }
+    public int selectedSprite() {
+        return intent.getIntExtra("sprite", -1);
+    }
+
 }
