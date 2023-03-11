@@ -33,6 +33,4 @@ public class Frog {
     Bitmap getFrog () {
         return frog;
     }
-
-    >>>>>>>7d 67620f 9656 a7281fad6ae4323c5ad792b2ca31
 }
