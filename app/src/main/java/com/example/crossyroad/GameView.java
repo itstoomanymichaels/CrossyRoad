@@ -28,7 +28,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int screenY;
     private String name;
     private String difficulty;
-
+    private Vehicle[] vehicles;
     private int life;
 
     private int score = 0;
@@ -54,23 +54,11 @@ public class GameView extends SurfaceView implements Runnable {
         this.name = name;
         this.difficulty = difficulty;
         this.life = life;
-        this.frog = new Frog(this, screenY, screenX, getResources(), sprite);
-
-
+        this.frog = new Frog( screenY, screenX, getResources(), sprite);
+        Road ro = new Road(screenY, screenX, getResources());
+        this.vehicles = ro.getVehicles();
         paint = new Paint();
-        paint.setTextSize(128);
-        paint.setColor(Color.WHITE);
 
-        //birds = new Bird[4];
-
-/*        for (int i = 0;i < 4;i++) {
-
-            Bird bird = new Bird(getResources());
-            birds[i] = bird;
-
-        }
-*/
-        random = new Random();
 
     }
 
@@ -95,35 +83,13 @@ public class GameView extends SurfaceView implements Runnable {
 
         if (flight.y >= screenY - flight.height)
             flight.y = screenY - flight.height;
-
-        for (Bird bird : birds) {
-
+ **/
+        for (Vehicle vehicle : vehicles) {
+             if (vehicle.getVehicle() != null) {
+                vehicle.move();
+             }
         }
 
-
-        for (Bird bird : birds) {
-
-            bird.x -= bird.speed;
-
-            if (bird.x + bird.width < 0) {
-
-                if (!bird.wasShot) {
-                    isGameOver = true;
-                    return;
-                }
-
-                int bound = (int) (30 * screenRatioX);
-                bird.speed = random.nextInt(bound);
-
-                if (bird.speed < 10 * screenRatioX)
-                    bird.speed = (int) (10 * screenRatioX);
-
-                bird.x = screenX;
-                bird.y = random.nextInt(screenY - bird.height);
-
-                bird.wasShot = false;
-            }
-**/
     }
 
     private void draw () {
@@ -131,11 +97,6 @@ public class GameView extends SurfaceView implements Runnable {
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-
-            /**for (Bird bird : birds)
-                canvas.drawBitmap(bird.getBird(), bird.x, bird.y, paint);
-             **/
-
 
             paint.setColor(Color.parseColor("#3CB371"));
             canvas.drawRect(0, 3*screenY/36, screenX, 6*screenY/36, paint );
@@ -155,8 +116,12 @@ public class GameView extends SurfaceView implements Runnable {
                 waitBeforeExiting ();
                 return;
             }
-
-            canvas.drawBitmap(frog.getFrog(), frog.x, frog.y, paint);
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle.getVehicle() != null) {
+                    canvas.drawBitmap(vehicle.getVehicle(), vehicle.getX(), vehicle.getY(), paint);
+                }
+            }
+            canvas.drawBitmap(frog.getFrog(), frog.getX(), frog.getY(), paint);
 
             getHolder().unlockCanvasAndPost(canvas);
 
@@ -174,16 +139,6 @@ public class GameView extends SurfaceView implements Runnable {
             e.printStackTrace();
         }
     }
-
-    /*private void saveIfHighScore() {
-
-        if (prefs.getInt("highscore", 0) < score) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("highscore", score);
-            editor.apply();
-        }
-
-    }*/
 
     private void sleep () {
         try {

@@ -4,21 +4,19 @@ package com.example.crossyroad;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-
-//import static com.heyletscode.ihavetofly.GameView.screenRatioX;
-//import static com.heyletscode.ihavetofly.GameView.screenRatioY;
-
 public class Frog {
 
-    public int x, y, width, height;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
     Bitmap frog;
 
-    Frog(int screenY, int screenX, Resources res, int sprite) {
+    public Frog(int screenY, int screenX, Resources res, int sprite) {
 
         frog = BitmapFactory.decodeResource(res, R.drawable.frog);
 
-        width = 2 * screenY / 36 - 30;
+        width = screenX / 20;
         height = 2 * screenY / 36 - 30;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
@@ -27,7 +25,13 @@ public class Frog {
 
     }
 
-    Bitmap getFrog () {
+    public int getX () {
+        return x;
+    }
+    public int getY () {
+        return y;
+    }
+    public Bitmap getFrog () {
         return frog;
     }
 }
