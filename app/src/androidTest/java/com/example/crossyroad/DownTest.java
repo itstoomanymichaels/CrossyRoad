@@ -1,39 +1,23 @@
 package com.example.crossyroad;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
+import static org.junit.Assert.*;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+import android.content.res.Resources;
+
 @RunWith(AndroidJUnit4.class)
 public class DownTest {
-    private GameScreen gs;
-
-    @Before
-    public void setUp() {
-        // Create a mock object
-        gs = mock(GameScreen.class);
-    }
-
+    private Frog f = new Frog(200, 100, Resources.getSystem(), 1);
     @Test
-    public void testNames() {
+    public void downTest() {
+        int y = f.getY();
 
-        float y = 0;
+        f.moveDown();
 
-        float oneMove = 50;
+        assertEquals(f.getY() >= y, true);
 
-        //run Mockito tests
-        Mockito.when(gs.downPos(y)).thenReturn(y + oneMove);
-        assertEquals(50, gs.downPos(y), 0.1);
     }
 }
+

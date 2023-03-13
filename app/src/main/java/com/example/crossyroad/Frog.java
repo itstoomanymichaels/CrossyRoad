@@ -23,6 +23,11 @@ public class Frog {
         } else {
             frog = BitmapFactory.decodeResource(res, R.drawable.frog3);
         }
+        this.screenX = screenX;
+        this.screenY = screenY;
+
+        this.y = screenY - height - 15;
+        this.x = screenX / 2 - width / 2;
 
     }
 

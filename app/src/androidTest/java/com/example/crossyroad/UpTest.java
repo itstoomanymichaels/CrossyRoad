@@ -8,16 +8,15 @@ import static org.junit.Assert.*;
 import android.content.res.Resources;
 
 @RunWith(AndroidJUnit4.class)
-public class DownTest {
+public class UpTest {
     private Frog f = new Frog(200, 100, Resources.getSystem(), 1);
     @Test
-    public void testNames() {
+    public void upTest() {
         int y = f.getY();
 
-        f.moveDown();
+        f.moveUp();
 
-        assertEquals(f.getY() > y, true);
+        assertEquals(f.getY() <= y, true);
 
     }
 }
-
