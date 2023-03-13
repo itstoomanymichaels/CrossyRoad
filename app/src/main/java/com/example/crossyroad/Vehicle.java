@@ -7,7 +7,7 @@ public abstract class Vehicle {
     protected int screenX;
     protected int x;
     protected int y;
-    Bitmap vehicle;
+    protected Bitmap vehicle;
     protected int speed;
     protected String direction;
 
@@ -29,6 +29,6 @@ public abstract class Vehicle {
     public abstract int getX();
     public abstract int getY();
 
-    public abstract Bitmap getVehicle ();
-    public abstract void move ();
+    public abstract Bitmap getVehicle();
+    public abstract void move();
 }

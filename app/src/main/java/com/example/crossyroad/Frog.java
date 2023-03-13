@@ -15,6 +15,7 @@ public class Frog {
     private Bitmap frog;
 
     public Frog(int screenY, int screenX, Resources res, int sprite) {
+        //sets sprite to appear in GameView
         if (sprite == 1) {
             frog = BitmapFactory.decodeResource(res, R.drawable.frog);
         } else if (sprite == 2) {
@@ -26,34 +27,35 @@ public class Frog {
     }
 
     public void moveRight() {
-        x += screenX/20;
+        x += screenX / 20;
         if (x >= screenX - width) {
             x = screenX - width;
         }
     }
 
     public void moveLeft() {
-        x -= screenX/20;
+        x -= screenX / 20;
         if (x < 0) {
             x = 0;
         }
     }
 
     public void moveUp() {
-        y -= 2 * screenY/36;
-        if (y <= 3 * screenY/36) {
-            y = 3 * screenY/36;
+        y -= 2 * screenY / 36;
+        if (y <= 3 * screenY / 36) {
+            y = 3 * screenY / 36;
         }
     }
 
     public void moveDown() {
-        y += 2* screenY/36;
+        y += 2 * screenY / 36;
         if (y > screenY - height) {
             y = screenY - height;
         }
     }
 
     public void setSize(int xx, int yy) {
+        //sets height, width, x-coordinate, and y-coordinate of frog
         width = xx / 20;
         height = 2 * yy / 36 - 30;
 
@@ -64,13 +66,13 @@ public class Frog {
         this.screenY = yy;
     }
 
-    public int getX () {
+    public int getX() {
         return x;
     }
-    public int getY () {
+    public int getY() {
         return y;
     }
-    public Bitmap getFrog () {
+    public Bitmap getFrog() {
         return frog;
     }
 }

@@ -4,14 +4,15 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class Truck extends Vehicle{
+public class Truck extends Vehicle {
 
     private Bitmap car;
     private int gap;
     private int width;
 
-    public Truck(int x, int y, int screenY, int screenX, int speed, String direction, Resources res, int gap) {
-        super(x, y, screenY, screenX, speed, direction);
+    public Truck(int x, int y, int screenY, int screenX, String direction,
+                 Resources res, int gap) {
+        super(x, y, screenY, screenX, 12, direction);
         this.gap = gap;
         if (Math.random() < 0.5) {
             if (direction.equals("R")) {
@@ -56,7 +57,7 @@ public class Truck extends Vehicle{
             }
         } else {
             if (x >= screenX) {
-                x = 0 - width - (6 * screenX/20);
+                x = 0 - width - (6 * screenX / 20);
             }
         }
     }

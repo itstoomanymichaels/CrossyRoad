@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class Bus extends Vehicle{
+public class Bus extends Vehicle {
     private Bitmap car;
 
     private int width;
@@ -43,11 +43,11 @@ public class Bus extends Vehicle{
         x += speed;
         if (direction.equals("L")) {
             if ((x + width) <= 0) {
-                x = screenX + (5 * screenX/20);
+                x = screenX + (5 * screenX / 20);
             }
         } else {
             if (x >= screenX) {
-                x = 0 - width - (5 * screenX/20);
+                x = 0 - width - (5 * screenX / 20);
             }
         }
     }
