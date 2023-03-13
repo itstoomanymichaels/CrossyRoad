@@ -92,59 +92,5 @@ public class GameScreen extends AppCompatActivity {
         super.onResume();
         gameView.resume();
     }
-    private class SwipeListener implements View.OnTouchListener {
-        private GestureDetector gestureDetector;
-
-        SwipeListener(View view) {
-            int threshold = 100;
-            int velocityThreshold = 100;
-            GestureDetector.SimpleOnGestureListener listener = new GestureDetector
-                    .SimpleOnGestureListener() {
-                @Override
-                public boolean onDown(@NonNull MotionEvent e) {
-                    return true;
-                }
-
-                @Override
-                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2,
-                                       float velocityX, float velocityY) {
-                    try {
-                        float diffY = e2.getY() - e1.getY();
-                        float diffX = e2.getX() - e1.getX();
-                        if (Math.abs(diffX) > Math.abs(diffY)) {
-                            if (Math.abs(diffX) > threshold && Math.abs(velocityX)
-                                    > velocityThreshold) {
-                                if (diffX > 0) {
-                                    //moveRight();
-                                } else {
-                                    //moveLeft();
-                                }
-                            }
-                        } else {
-                            if (Math.abs(diffY) > threshold && Math.abs(velocityY)
-                                    > velocityThreshold) {
-                                if (diffY > 0) {
-                                    //moveDown();
-                                } else {
-                                    //moveUp();
-                                }
-                            }
-                        }
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                    return false;
-                }
-            };
-            gestureDetector = new GestureDetector(listener);
-            view.setOnTouchListener(this);
-        }
-
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            return gestureDetector.onTouchEvent(motionEvent);
-        }
-
-    }
 
 }
