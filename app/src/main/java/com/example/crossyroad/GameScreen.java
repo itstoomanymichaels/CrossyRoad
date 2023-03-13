@@ -1,8 +1,9 @@
 package com.example.crossyroad;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.graphics.Point;
 import android.view.WindowManager;
@@ -23,11 +24,15 @@ public class GameScreen extends AppCompatActivity {
     //slide use
     private GameView gameView;
 
+    private Frog frog;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Point point = new Point();
 
@@ -40,8 +45,23 @@ public class GameScreen extends AppCompatActivity {
         int life = setLifeByDifficulty(
                 extras.getString("difficulty"));
         int sprite = extras.getInt("sprite");
-
-        gameView = new GameView(this, point.x, point.y, name, difficulty, life, sprite);
+        frog = new Frog(0, 0, getResources(), sprite);
+        gameView = new GameView(this, point.x, point.y, name, difficulty, life, frog);
+        //Moves frog based on direction of swipe
+        gameView.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+                frog.moveUp();
+            }
+            public void onSwipeRight() {
+                frog.moveRight();
+            }
+            public void onSwipeLeft() {
+                frog.moveLeft();
+            }
+            public void onSwipeBottom() {
+                frog.moveDown();
+            }
+        });
 
         setContentView(gameView);
 
