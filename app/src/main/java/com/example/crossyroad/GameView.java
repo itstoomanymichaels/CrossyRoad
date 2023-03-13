@@ -3,21 +3,12 @@ package com.example.crossyroad;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.os.Build;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class GameView extends SurfaceView implements Runnable {
 
@@ -31,34 +22,31 @@ public class GameView extends SurfaceView implements Runnable {
     private Vehicle[] vehicles;
     private int life;
 
-    private int score = 0;
-    public static float screenRatioX, screenRatioY;
+    //variables for score
+    private int score;
+    private int max;
     private Paint paint;
     //private Bird[] birds;   //change bird to vehicles
-    private SharedPreferences prefs;
-    private Random random;
-    private SoundPool soundPool;
     private GameScreen activity;
     private Frog frog;
-    //private Background background1, background2;
 
-    public GameView(GameScreen activity, int screenX, int screenY, String name, String difficulty, int life, int sprite) {
+    public GameView(GameScreen activity, int screenX, int screenY, String name, String difficulty, int life, Frog frog) {
         super(activity);
 
         this.activity = activity;
 
         this.screenX = screenX;
         this.screenY = screenY;
-        screenRatioX = 1920f / screenX;
-        screenRatioY = 1080f / screenY;
+        this.score = 0;
         this.name = name;
         this.difficulty = difficulty;
         this.life = life;
-        this.frog = new Frog( screenY, screenX, getResources(), sprite);
+        this.frog = frog;
+        frog.setSize(screenX, screenY);
         Road ro = new Road(screenY, screenX, getResources());
         this.vehicles = ro.getVehicles();
         paint = new Paint();
-
+        this.max = screenY;
 
     }
 
@@ -72,22 +60,27 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void update () {
-/**
-        if (flight.isGoingUp)
-            flight.y -= 30 * screenRatioY;
-        else
-            flight.y += 30 * screenRatioY;
-
-        if (flight.y < 0)
-            flight.y = 0;
-
-        if (flight.y >= screenY - flight.height)
-            flight.y = screenY - flight.height;
- **/
         for (Vehicle vehicle : vehicles) {
              if (vehicle.getVehicle() != null) {
                 vehicle.move();
              }
+        }
+
+        if (frog.getY() < max) {
+            if (frog.getY() < 22*screenY/36) {
+                score += 500;
+            } else if (frog.getY() < 24*screenY/36) {
+                score += 300;
+            } else if (frog.getY() < 26*screenY/36) {
+                score += 100;
+            } else if (frog.getY() < 28*screenY/36) {
+                score += 500;
+            } else if (frog.getY() < 30*screenY/36) {
+                score += 300;
+            } else if (frog.getY() < 32*screenY/36) {
+                score += 100;
+            }
+            max = frog.getY();
         }
 
     }
@@ -97,7 +90,8 @@ public class GameView extends SurfaceView implements Runnable {
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-
+            paint.setColor(Color.BLACK);
+            canvas.drawRect(0, 0, screenX, 3*screenY/36, paint);
             paint.setColor(Color.parseColor("#3CB371"));
             canvas.drawRect(0, 3*screenY/36, screenX, 6*screenY/36, paint );
             paint.setColor(Color.parseColor("#4682B4"));
@@ -108,6 +102,16 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawRect(0, 22*screenY/36, screenX, 34*screenY/36, paint );
             paint.setColor(Color.parseColor("#BDB76B"));
             canvas.drawRect(0, 34*screenY/36, screenX, screenY, paint );
+
+            paint.setColor(Color.parseColor("#BDB76B"));
+            paint.setTextSize(screenY/36);
+            canvas.drawText("Name: " + name, 0, screenY/36, paint);
+            paint.setTextSize(screenY/36);
+            canvas.drawText("Difficulty: " + difficulty, screenX/2,screenY/36, paint);
+            paint.setTextSize(screenY/36);
+            canvas.drawText("Life: " + life, 0, 2 * screenY/36, paint);
+            paint.setTextSize(screenY/36);
+            canvas.drawText("Score: " + score, screenX/2,2 * screenY/36, paint);
 
             if (isGameOver) {
                 isPlaying = false;
@@ -130,7 +134,6 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void waitBeforeExiting() {
-
         try {
             Thread.sleep(3000);
             activity.startActivity(new Intent(activity, Welcome.class));
@@ -142,21 +145,19 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void sleep () {
         try {
-            Thread.sleep(50);
+            Thread.sleep(80);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public void resume () {
-
         isPlaying = true;
         thread = new Thread(this);
         thread.start();
     }
 
     public void pause () {
-
         try {
             isPlaying = false;
             thread.join();

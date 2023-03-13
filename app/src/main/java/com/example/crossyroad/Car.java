@@ -55,7 +55,7 @@ public class Car extends Vehicle {
             }
         } else {
             if (x >= screenX) {
-                x = 0 - screenX/20;
+                x = 0 - screenX/20 - width;
             }
         }
     }

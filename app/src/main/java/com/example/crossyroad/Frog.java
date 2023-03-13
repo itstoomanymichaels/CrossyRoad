@@ -10,19 +10,58 @@ public class Frog {
     private int y;
     private int width;
     private int height;
-    Bitmap frog;
+    private int screenX;
+    private int screenY;
+    private Bitmap frog;
 
     public Frog(int screenY, int screenX, Resources res, int sprite) {
+        if (sprite == 1) {
+            frog = BitmapFactory.decodeResource(res, R.drawable.frog);
+        } else if (sprite == 2) {
+            frog = BitmapFactory.decodeResource(res, R.drawable.frog2);
+        } else {
+            frog = BitmapFactory.decodeResource(res, R.drawable.frog3);
+        }
 
-        frog = BitmapFactory.decodeResource(res, R.drawable.frog);
+    }
 
-        width = screenX / 20;
-        height = 2 * screenY / 36 - 30;
+    public void moveRight() {
+        x += screenX/20;
+        if (x >= screenX - width) {
+            x = screenX - width;
+        }
+    }
+
+    public void moveLeft() {
+        x -= screenX/20;
+        if (x < 0) {
+            x = 0;
+        }
+    }
+
+    public void moveUp() {
+        y -= 2 * screenY/36;
+        if (y <= 3 * screenY/36) {
+            y = 3 * screenY/36;
+        }
+    }
+
+    public void moveDown() {
+        y += 2* screenY/36;
+        if (y > screenY - height) {
+            y = screenY - height;
+        }
+    }
+
+    public void setSize(int xx, int yy) {
+        width = xx / 20;
+        height = 2 * yy / 36 - 30;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
-        y = screenY - height - 15;
-        x = screenX / 2 - width / 2;
-
+        this.y = yy - height - 15;
+        this.x = xx / 2 - width / 2;
+        this.screenX = xx;
+        this.screenY = yy;
     }
 
     public int getX () {

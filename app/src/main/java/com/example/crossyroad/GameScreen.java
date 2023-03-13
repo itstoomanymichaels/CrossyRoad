@@ -5,7 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.graphics.Point;
+import android.view.View;
 import android.view.WindowManager;
+
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import android.view.GestureDetector;
+import android.content.Context;
 
 public class GameScreen extends AppCompatActivity {
 
@@ -13,6 +19,9 @@ public class GameScreen extends AppCompatActivity {
 
     //slide use
     private GameView gameView;
+
+    private RelativeLayout relativeLayout;
+    public Frog frog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +40,22 @@ public class GameScreen extends AppCompatActivity {
         int life = setLifeByDifficulty(
                 extras.getString("difficulty"));
         int sprite = extras.getInt("sprite");
-
-        gameView = new GameView(this, point.x, point.y, name, difficulty, life, sprite);
+        frog = new Frog( 0, 0, getResources(), sprite);
+        gameView = new GameView(this, point.x, point.y, name, difficulty, life, frog);
+        gameView.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+                frog.moveUp();
+            }
+            public void onSwipeRight() {
+                frog.moveRight();
+            }
+            public void onSwipeLeft() {
+                frog.moveLeft();
+            }
+            public void onSwipeBottom() {
+                frog.moveDown();
+            }
+        });
 
         setContentView(gameView);
     }

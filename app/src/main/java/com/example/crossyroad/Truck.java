@@ -8,6 +8,7 @@ public class Truck extends Vehicle{
 
     private Bitmap car;
     private int gap;
+    private int width;
 
     public Truck(int x, int y, int screenY, int screenX, int speed, String direction, Resources res, int gap) {
         super(x, y, screenY, screenX, speed, direction);
@@ -25,7 +26,7 @@ public class Truck extends Vehicle{
                 this.car = BitmapFactory.decodeResource(res, R.drawable.rbt);
             }
         }
-        int width = 4 * screenX / 20;
+        width = 4 * screenX / 20;
         height = 2 * screenY / 36 - 15;
 
         car = Bitmap.createScaledBitmap(car, width, height, false);
@@ -48,6 +49,15 @@ public class Truck extends Vehicle{
 
     @Override
     public void move() {
-
+        x += speed;
+        if (direction.equals("L")) {
+            if ((x + width) <= 0) {
+                x = screenX;
+            }
+        } else {
+            if (x >= screenX) {
+                x = 0 - width - (6 * screenX/20);
+            }
+        }
     }
 }
