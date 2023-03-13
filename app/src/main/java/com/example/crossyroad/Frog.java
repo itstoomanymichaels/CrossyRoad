@@ -57,7 +57,7 @@ public class Frog {
     public void setSize(int xx, int yy) {
         //sets height, width, x-coordinate, and y-coordinate of frog
         width = xx / 20;
-        height = 2 * yy / 36 - 30;
+        height = xx / 20;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
         this.y = yy - height - 15;

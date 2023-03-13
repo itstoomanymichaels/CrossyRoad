@@ -7,19 +7,11 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.graphics.Point;
 import android.view.WindowManager;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+
 
 public class GameScreen extends AppCompatActivity {
 
     private Bundle extras;
-    private FrameLayout gameScreen;
-    private RelativeLayout relativeLayout;
-    private SwipeListener swipeListener;
 
     //slide use
     private GameView gameView;
@@ -64,9 +56,6 @@ public class GameScreen extends AppCompatActivity {
         });
 
         setContentView(gameView);
-
-        relativeLayout = findViewById(R.id.relative_layout);
-        swipeListener = new SwipeListener(relativeLayout);
     }
 
     public int setLifeByDifficulty(String difficulty) {

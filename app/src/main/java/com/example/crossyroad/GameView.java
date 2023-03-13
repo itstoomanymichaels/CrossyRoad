@@ -71,7 +71,7 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
         //Updates score if frog has reached new height
-        if (frog.getY() < max) {
+        if (frog.getY() < max && frog.getY() > 20 * screenY / 36) {
             if (frog.getY() < 22 * screenY / 36) {
                 score += 500;
             } else if (frog.getY() < 24 * screenY / 36) {
