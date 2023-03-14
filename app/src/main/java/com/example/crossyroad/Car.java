@@ -8,6 +8,8 @@ public class Car extends Vehicle {
 
     private Bitmap car;
     private int width;
+    private int height;
+
 
     public Car(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
 
@@ -25,10 +27,9 @@ public class Car extends Vehicle {
                 this.car = BitmapFactory.decodeResource(res, R.drawable.ryc);
             }
         }
-        width = 3 * screenX / 20;
-        height = 2 * screenY / 36 - 15;
+        this.width = 3 * screenX / 20;
+        this.height = 2 * screenY / 36 - 15;
 
-        car = Bitmap.createScaledBitmap(car, width, height, false);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class Car extends Vehicle {
 
     @Override
     public Bitmap getVehicle() {
-        return car;
+        return Bitmap.createScaledBitmap(car, width, height, false);
     }
 
     @Override

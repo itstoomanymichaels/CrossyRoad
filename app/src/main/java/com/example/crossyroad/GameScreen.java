@@ -19,6 +19,7 @@ public class GameScreen extends AppCompatActivity {
     private GameView gameView;
 
     private Frog frog;
+    Point point = new Point();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -28,7 +29,6 @@ public class GameScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Point point = new Point();
 
         getWindowManager().getDefaultDisplay().getSize(point);
 
@@ -60,6 +60,10 @@ public class GameScreen extends AppCompatActivity {
         setContentView(gameView);
 
 
+    }
+
+    public Point getPoint(){
+        return point;
     }
 
     public int setLifeByDifficulty(String difficulty) {

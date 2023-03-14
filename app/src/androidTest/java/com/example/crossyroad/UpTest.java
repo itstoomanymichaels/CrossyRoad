@@ -8,15 +8,15 @@ import static org.junit.Assert.*;
 import android.content.res.Resources;
 
 @RunWith(AndroidJUnit4.class)
-public class LeftTest {
+public class UpTest {
     private Frog f = new Frog(200, 100, Resources.getSystem(), 1);
     @Test
-    public void leftTest() {
-        int x = f.getX();
+    public void upTest() {
+        int y = f.getY();
 
-        f.moveLeft();
+        f.moveUp();
 
-        assertEquals(f.getX() <= x, true);
+        assertEquals(f.getY() <= y, true);
 
     }
 }
