@@ -13,6 +13,8 @@ public class GameScreen extends AppCompatActivity {
 
     private Bundle extras;
 
+    //private SwipeListener swipeListener;
+
     //slide use
     private GameView gameView;
 
@@ -56,6 +58,8 @@ public class GameScreen extends AppCompatActivity {
         });
 
         setContentView(gameView);
+
+
     }
 
     public int setLifeByDifficulty(String difficulty) {

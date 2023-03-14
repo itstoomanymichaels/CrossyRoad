@@ -16,24 +16,29 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class DownTest {
-    private GameScreen gs;
+public class ScoreIncreaseTest {
+    private GameView gv;
+    private Frog frog;
 
     @Before
     public void setUp() {
         // Create a mock object
-        gs = mock(GameScreen.class);
+        gv = mock(GameView.class);
+        frog = mock(Frog.class);
     }
 
     @Test
-    public void testNames() {
+    public void testScore() {
 
-        float y = 0;
-
-        float oneMove = 50;
+        int y = 450;
+        int screenY = 720;
+        int score = 0;
 
         //run Mockito tests
-        Mockito.when(gs.downPos(y)).thenReturn(y + oneMove);
-        assertEquals(50, gs.downPos(y), 0.1);
+        Mockito.when(frog.moveUp()).thenReturn(y - (2 * screenY / 36));
+        assertEquals(410, frog.moveUp());
+
+        Mockito.when(gv.getScore()).thenReturn(score + 500);
+        assertEquals(500, gv.getScore());
     }
 }

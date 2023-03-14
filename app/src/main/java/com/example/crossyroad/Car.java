@@ -47,7 +47,7 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void move() {
+    public int move() {
         x += speed;
         if (direction.equals("L")) {
             if ((x + width) <= 0) {
@@ -58,6 +58,7 @@ public class Car extends Vehicle {
                 x = 0 - screenX / 20 - width;
             }
         }
+        return x;
     }
 
 
