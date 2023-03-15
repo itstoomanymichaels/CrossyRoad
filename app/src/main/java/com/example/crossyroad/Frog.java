@@ -45,11 +45,12 @@ public class Frog {
         }
     }
 
-    public void moveUp() {
+    public int moveUp() {
         y -= 2 * screenY / 36;
         if (y <= 3 * screenY / 36) {
             y = 3 * screenY / 36;
         }
+        return y;
     }
 
     public void moveDown() {
