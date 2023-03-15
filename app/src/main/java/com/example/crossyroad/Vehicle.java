@@ -25,13 +25,19 @@ public abstract class Vehicle {
             this.speed = 0;
         }
     }
-    public int getSpeed(){
+    public int getSpeed() {
         return speed;
+
     };
 
     public abstract int getX();
     public abstract int getY();
-
     public abstract Bitmap getVehicle();
+    public String getDirection() {
+        return direction;
+    }
+    public int getScreenX() {
+        return screenX;
+    }
     public abstract int move();
 }

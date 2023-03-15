@@ -19,7 +19,7 @@ public class GameScreen extends AppCompatActivity {
     private GameView gameView;
 
     private Frog frog;
-    Point point = new Point();
+    private Point point = new Point();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -62,7 +62,7 @@ public class GameScreen extends AppCompatActivity {
 
     }
 
-    public Point getPoint(){
+    public Point getPoint() {
         return point;
     }
 

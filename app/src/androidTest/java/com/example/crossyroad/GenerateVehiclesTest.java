@@ -14,7 +14,7 @@ public class GenerateVehiclesTest {
     private Vehicle vehicle;
 
     @Before
-    public void setup(){
+    public void setup() {
         vehicle = mock(Car.class);
     }
 

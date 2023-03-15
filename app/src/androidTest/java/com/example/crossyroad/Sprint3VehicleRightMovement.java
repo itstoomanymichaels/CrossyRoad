@@ -6,7 +6,7 @@ import android.content.res.Resources;
 
 import org.junit.Test;
 
-public class Sprint3_VehicleRightMovement {
+public class Sprint3VehicleRightMovement {
     private Vehicle v = new Car(40, 0, 200, 100, 10, "R",
             Resources.getSystem());
 

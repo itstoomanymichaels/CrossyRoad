@@ -4,7 +4,6 @@ import static org.mockito.Mockito.mock;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ public class VehicleCollisionTest {
     private Vehicle v2;
     private int screenX = 100;
     @Before
-    public void setup(){
+    public void setup() {
         v1 = mock(Car.class);
         v2 = mock(Car.class);
     }
@@ -28,12 +27,14 @@ public class VehicleCollisionTest {
         int car2X = 0;
         int car2Width = 3 * screenX / 20;
         for (int i = 0; i < screenX; i++) {
-            Mockito.when(v1.move()).thenReturn(carX += v1.speed);
-            Mockito.when(v2.move()).thenReturn(car2X += v2.speed);
+            carX += v1.speed;
+            car2X += v2.speed;
+            Mockito.when(v1.move()).thenReturn(carX);
+            Mockito.when(v2.move()).thenReturn(car2X);
             if (carX + carWidth >= car2X + car2Width) {
-                assert(true);
+                assert (true);
             } else {
-                assert(false);
+                assert (false);
             }
         }
     }

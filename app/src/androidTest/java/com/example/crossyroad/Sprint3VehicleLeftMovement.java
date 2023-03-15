@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import android.content.res.Resources;
 
 @RunWith(AndroidJUnit4.class)
-public class Sprint3_VehicleLeftMovement {
+public class Sprint3VehicleLeftMovement {
 
     private Vehicle v = new Car(80, 0, 200, 100, 10, "L",
             Resources.getSystem());

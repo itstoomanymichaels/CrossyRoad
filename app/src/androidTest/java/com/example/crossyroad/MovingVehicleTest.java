@@ -16,7 +16,7 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class movingVehicleTest {
+public class MovingVehicleTest {
     private Car car;
     private Bus bus;
     private Truck truck;
