@@ -20,7 +20,7 @@ import org.mockito.Mockito;
 @RunWith(AndroidJUnit4.class)
 public class DifferentLaneScore {
 
-    GameView gv;
+    GameView gv = mock(GameView.class);
     @Test
     public void testScore() {
         assertTrue(gv.carLaneScore != gv.truckLaneScore && gv.carLaneScore != gv.busLaneScore
