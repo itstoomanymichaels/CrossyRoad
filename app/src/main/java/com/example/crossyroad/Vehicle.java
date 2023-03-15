@@ -30,5 +30,5 @@ public abstract class Vehicle {
     public abstract int getY();
 
     public abstract Bitmap getVehicle();
-    public abstract void move();
+    public abstract int move();
 }
