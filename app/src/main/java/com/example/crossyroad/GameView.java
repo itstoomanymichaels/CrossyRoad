@@ -29,6 +29,10 @@ public class GameView extends SurfaceView implements Runnable {
     private GameScreen activity;
     private Frog frog;
 
+    public final int carLaneScore = 500;
+    public final int busLaneScore = 100;
+    public final int truckLaneScore = 300;
+
     public GameView(GameScreen activity, int screenX, int screenY, String name, String difficulty,
                     int life, Frog frog) {
         super(activity);
@@ -73,17 +77,17 @@ public class GameView extends SurfaceView implements Runnable {
         //Updates score if frog has reached new height
         if (frog.getY() < max && frog.getY() > 20 * screenY / 36) {
             if (frog.getY() < 22 * screenY / 36) {
-                score += 500;
+                score += carLaneScore;
             } else if (frog.getY() < 24 * screenY / 36) {
-                score += 300;
+                score += truckLaneScore;
             } else if (frog.getY() < 26 * screenY / 36) {
-                score += 100;
+                score += busLaneScore;
             } else if (frog.getY() < 28 * screenY / 36) {
-                score += 500;
+                score += carLaneScore;
             } else if (frog.getY() < 30 * screenY / 36) {
-                score += 300;
+                score += truckLaneScore;
             } else if (frog.getY() < 32 * screenY / 36) {
-                score += 100;
+                score += busLaneScore;
             }
             max = frog.getY();
         }
