@@ -36,8 +36,5 @@ public abstract class Vehicle {
     public String getDirection() {
         return direction;
     }
-    public int getScreenX() {
-        return screenX;
-    }
     public abstract int move();
 }
