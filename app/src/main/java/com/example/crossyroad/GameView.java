@@ -106,7 +106,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     }
 
-    public void collisionUpdate(boolean b) {
+    public boolean collisionUpdate(boolean b) {
         if (b) {
             life -= 1;
             frog.setSize(screenX, screenY);
@@ -115,7 +115,9 @@ public class GameView extends SurfaceView implements Runnable {
             }
             score = 0;
             max = screenY;
+            return true;
         }
+        return false;
     }
 
     private void draw() {
