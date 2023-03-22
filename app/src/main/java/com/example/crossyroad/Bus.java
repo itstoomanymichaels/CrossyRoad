@@ -3,43 +3,19 @@ package com.example.crossyroad;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 
 public class Bus extends Vehicle {
-    private Bitmap car;
-
+    private Bitmap bus;
     private int width;
     public Bus(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
-
         super(x, y, screenY, screenX, speed, direction);
-        if (direction.equals("R")) {
-            this.car = BitmapFactory.decodeResource(res, R.drawable.lb);
-        } else {
-            this.car = BitmapFactory.decodeResource(res, R.drawable.rb);
-        }
+        createBus(res);
         width = 5 * screenX / 20;
-        height = 2 * screenY / 36 - 15;
-
-        car = Bitmap.createScaledBitmap(car, width, height, false);
 
     }
-
     @Override
-    public int getX() {
-        return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    @Override
-    public Bitmap getVehicle() {
-        return car;
-    }
-
-    @Override
-    public int move() {
+    public void drive() {
         x += speed;
         if (direction.equals("L")) {
             if ((x + width) <= 0) {
@@ -47,9 +23,28 @@ public class Bus extends Vehicle {
             }
         } else {
             if (x >= screenX) {
-                x = 0 - width - (5 * screenX / 20);
+                x = -width - (5 * screenX / 20);
             }
         }
-        return x;
     }
+    @Override
+    public Bitmap getVehicle() {
+        return Bitmap.createScaledBitmap(bus, width, height, false);
+    }
+
+    @Override
+    public boolean isCollided(Frog frog) {
+        Rect f = new Rect(frog.getX(), frog.getY(), frog.getX() + frog.getWidth(),
+                frog.getY() + frog.getHeight());
+        Rect c = new Rect(x, y, x + width, y + height);
+        return Rect.intersects(f, c);
+    }
+    private void createBus(Resources res) {
+        if (direction.equals("R")) {
+            this.bus = BitmapFactory.decodeResource(res, R.drawable.lb);
+        } else {
+            this.bus = BitmapFactory.decodeResource(res, R.drawable.rb);
+        }
+    }
+
 }

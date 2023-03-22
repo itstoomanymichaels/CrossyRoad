@@ -19,10 +19,10 @@ public class Road {
                         5, "R", res);
             } else if (i < 10) {
                 v = new Truck((i - 7) * 8 * screenX / 20, 24 * screenY / 36, screenY, screenX,
-                        "L", res, 4);
+                        "L", res);
             } else if (i < 13) {
                 v = new Truck((i - 10) * 10 * screenX / 20, 30 * screenY / 36, screenY,
-                        screenX, "R", res, 6);
+                        screenX, "R", res);
             } else if (i < 16) {
                 v = new Bus((i - 13) * 10 * screenX / 20, 28 * screenY / 36, screenY, screenX,
                         20, "L", res);

@@ -60,6 +60,25 @@ public class Frog {
         }
     }
 
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public Bitmap getFrog() {
+        return frog;
+    }
+
     public void setSize(int xx, int yy) {
         //sets height, width, x-coordinate, and y-coordinate of frog
         width = xx / 20;
@@ -70,15 +89,5 @@ public class Frog {
         this.x = xx / 2 - width / 2;
         this.screenX = xx;
         this.screenY = yy;
-    }
-
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
-    public Bitmap getFrog() {
-        return frog;
     }
 }

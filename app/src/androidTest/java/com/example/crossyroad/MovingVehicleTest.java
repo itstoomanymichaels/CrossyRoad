@@ -36,11 +36,13 @@ public class MovingVehicleTest {
         int screenX = 400;
 
         //run Mockito tests
-        Mockito.when(car.move()).thenReturn(screenX + screenX / 20);
-        assertEquals(420, car.move());
+        Mockito.when(car.getX()).thenReturn(screenX + screenX / 20);
+        car.drive();
+        assertEquals(420, car.getX());
 
-        Mockito.when(car.move()).thenReturn(0 - screenX / 20 - width);
-        assertEquals(-30, car.move());
+        Mockito.when(car.getX()).thenReturn(0 - screenX / 20 - width);
+        car.drive();
+        assertEquals(-30, car.getX());
 
     }
 
@@ -52,11 +54,13 @@ public class MovingVehicleTest {
         int screenX = 400;
 
         //run Mockito tests
-        Mockito.when(bus.move()).thenReturn(screenX + (5 * screenX / 20));
-        assertEquals(500, bus.move());
+        Mockito.when(bus.getX()).thenReturn(screenX + (5 * screenX / 20));
+        car.drive();
+        assertEquals(500, bus.getX());
 
-        Mockito.when(bus.move()).thenReturn(0 - width - (5 * screenX / 20));
-        assertEquals(-120, bus.move());
+        Mockito.when(bus.getX()).thenReturn(0 - width - (5 * screenX / 20));
+        car.drive();
+        assertEquals(-120, bus.getX());
 
     }
 
@@ -68,11 +72,13 @@ public class MovingVehicleTest {
         int screenX = 400;
 
         //run Mockito tests
-        Mockito.when(truck.move()).thenReturn(screenX);
-        assertEquals(400, truck.move());
+        Mockito.when(truck.getX()).thenReturn(screenX);
+        car.drive();
+        assertEquals(400, truck.getX());
 
-        Mockito.when(truck.move()).thenReturn(0 - width - (6 * screenX / 20));
-        assertEquals(-140, truck.move());
+        Mockito.when(truck.getX()).thenReturn(0 - width - (6 * screenX / 20));
+        car.drive();
+        assertEquals(-140, truck.getX());
 
     }
 }

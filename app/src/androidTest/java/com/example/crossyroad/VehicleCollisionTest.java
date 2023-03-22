@@ -29,8 +29,10 @@ public class VehicleCollisionTest {
         for (int i = 0; i < screenX; i++) {
             carX += v1.speed;
             car2X += v2.speed;
-            Mockito.when(v1.move()).thenReturn(carX);
-            Mockito.when(v2.move()).thenReturn(car2X);
+            v1.drive();
+            v2.drive();
+            Mockito.when(v1.getX()).thenReturn(carX);
+            Mockito.when(v2.getX()).thenReturn(car2X);
             if (carX + carWidth >= car2X + car2Width) {
                 assert (true);
             } else {

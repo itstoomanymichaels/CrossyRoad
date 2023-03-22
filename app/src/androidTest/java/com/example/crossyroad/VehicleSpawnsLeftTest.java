@@ -15,9 +15,10 @@ public class VehicleSpawnsLeftTest {
     public void vehicleSpawnsLeftTest() {
         int carX = v.getX();
         int tracker = v.getX();
-        while (carX < v.getScreenX()) {
+        while (carX < 100) {
             carX += v.getSpeed();
-            tracker = v.move();
+            v.drive();
+            tracker = v.getX();
         }
         assertEquals(true, carX > tracker);
     }

@@ -2,7 +2,7 @@ package com.example.crossyroad;
 
 import android.graphics.Bitmap;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Drivable {
     protected int height;
     protected int screenX;
     protected int x;
@@ -25,16 +25,19 @@ public abstract class Vehicle {
             this.speed = 0;
         }
     }
+    public abstract Bitmap getVehicle();
+    public abstract boolean isCollided(Frog frog);
+
     public int getSpeed() {
         return speed;
 
     };
 
-    public abstract int getX();
-    public abstract int getY();
-    public abstract Bitmap getVehicle();
-    public String getDirection() {
-        return direction;
+    public int getX() {
+        return x;
     }
-    public abstract int move();
+    public int getY() {
+        return y;
+    }
+
 }
