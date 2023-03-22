@@ -68,29 +68,19 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void update() {
+        boolean collision = false;
         //Moves all vehicles to next step
         if (frog.getY() < 20 * screenY / 36) {
-            life -= 1;
-            frog.setSize(screenX, screenY);
-            if (score > high_score) {
-                high_score = score;
-            }
-            score = 0;
-            max = screenY;
+            collision = true;
         }
 
         for (Vehicle vehicle : vehicles) {
             if (vehicle.isCollided(frog)) {
-                life -= 1;
-                frog.setSize(screenX, screenY);
-                if (score > high_score) {
-                    high_score = score;
-                }
-                score = 0;
-                max = screenY;
+                collision = true;
             }
             vehicle.drive();
         }
+        collisionUpdate(collision);
 
         //Updates score if frog has reached new height
         if (frog.getY() < max && frog.getY() > 20 * screenY / 36) {
@@ -114,6 +104,18 @@ public class GameView extends SurfaceView implements Runnable {
             return;
         }
 
+    }
+
+    public void collisionUpdate(boolean b) {
+        if (b) {
+            life -= 1;
+            frog.setSize(screenX, screenY);
+            if (score > high_score) {
+                high_score = score;
+            }
+            score = 0;
+            max = screenY;
+        }
     }
 
     private void draw() {
@@ -203,5 +205,13 @@ public class GameView extends SurfaceView implements Runnable {
 
     public int getScore() {
         return score;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getHigh_score() {
+        return high_score;
     }
 }
