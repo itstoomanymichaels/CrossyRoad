@@ -36,6 +36,14 @@ public class GameOver extends AppCompatActivity {
         startActivity(new Intent(GameOver.this, ConfigScreen.class));
     }
 
+    public Button getRestart(){
+        return restart;
+    }
+
+    public Button getQuit(){
+        return quit;
+    }
+
     public void Close(View v) {
         finishAffinity();
     }
