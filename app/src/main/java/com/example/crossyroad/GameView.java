@@ -216,4 +216,8 @@ public class GameView extends SurfaceView implements Runnable {
     public int getHigh_score() {
         return high_score;
     }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
 }
