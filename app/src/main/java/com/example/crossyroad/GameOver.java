@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class GameOver extends AppCompatActivity {
 
-    TextView score;
+    private TextView score;
 
-    Button restart;
+    private Button restart;
 
-    Button quit;
+    private Button quit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,11 @@ public class GameOver extends AppCompatActivity {
 
     }
 
-    public void Restart(View v) {
+    public void restart(View v) {
         startActivity(new Intent(GameOver.this, ConfigScreen.class));
     }
 
-    public void Close(View v) {
+    public void close(View v) {
         finishAffinity();
     }
 
