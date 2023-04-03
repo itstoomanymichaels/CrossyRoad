@@ -44,6 +44,8 @@ public class GameOver extends AppCompatActivity {
         return quit;
     }
 
+    public TextView getScore() { return score; }
+
     public void Close(View v) {
         finishAffinity();
     }
