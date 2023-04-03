@@ -14,7 +14,7 @@ public class Sprint3VehicleRightMovement {
     public void vehicleMovesRightTest() {
         int x = v.getX();
 
-        v.move();
+        v.drive();
 
         assertEquals(v.getX() > x, true);
 

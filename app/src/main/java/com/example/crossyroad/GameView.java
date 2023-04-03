@@ -22,6 +22,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int life;
 
     //variables for score
+    private int highScore = 0;
     private int score;
     //Is the maximum height that the frog has reached
     private int max;
@@ -29,9 +30,9 @@ public class GameView extends SurfaceView implements Runnable {
     private GameScreen activity;
     private Frog frog;
 
-    public final int carLaneScore = 500;
-    public final int busLaneScore = 100;
-    public final int truckLaneScore = 300;
+    private final int carLaneScore = 500;
+    private final int busLaneScore = 100;
+    private final int truckLaneScore = 300;
 
     public GameView(GameScreen activity, int screenX, int screenY, String name, String difficulty,
                     int life, Frog frog) {
@@ -67,12 +68,19 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void update() {
+        boolean collision = false;
         //Moves all vehicles to next step
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle.getVehicle() != null) {
-                vehicle.move();
-            }
+        if (frog.getY() < 20 * screenY / 36) {
+            collision = true;
         }
+
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.isCollided(frog)) {
+                collision = true;
+            }
+            vehicle.drive();
+        }
+        collisionUpdate(collision);
 
         //Updates score if frog has reached new height
         if (frog.getY() < max && frog.getY() > 20 * screenY / 36) {
@@ -91,7 +99,25 @@ public class GameView extends SurfaceView implements Runnable {
             }
             max = frog.getY();
         }
+        if (life == 0) {
+            isGameOver = true;
+            return;
+        }
 
+    }
+
+    public boolean collisionUpdate(boolean b) {
+        if (b) {
+            life -= 1;
+            frog.setSize(screenX, screenY);
+            if (score > highScore) {
+                highScore = score;
+            }
+            score = 0;
+            max = screenY;
+            return true;
+        }
+        return false;
     }
 
     private void draw() {
@@ -125,9 +151,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawText("Score: " + score, screenX / 2, 2 * screenY / 36, paint);
             //Draws all the vehicles in the vehicle list
             for (Vehicle vehicle : vehicles) {
-                if (vehicle.getVehicle() != null) {
-                    canvas.drawBitmap(vehicle.getVehicle(), vehicle.getX(), vehicle.getY(), paint);
-                }
+                canvas.drawBitmap(vehicle.getVehicle(), vehicle.getX(), vehicle.getY(), paint);
             }
             //Draws the frog
             canvas.drawBitmap(frog.getFrog(), frog.getX(), frog.getY(), paint);
@@ -135,7 +159,6 @@ public class GameView extends SurfaceView implements Runnable {
             if (isGameOver) {
                 isPlaying = false;
                 getHolder().unlockCanvasAndPost(canvas);
-                //saveIfHighScore();
                 waitBeforeExiting();
                 return;
             }
@@ -147,8 +170,10 @@ public class GameView extends SurfaceView implements Runnable {
     //Waits a select time, then goes to main screen
     private void waitBeforeExiting() {
         try {
-            Thread.sleep(3000);
-            activity.startActivity(new Intent(activity, Welcome.class));
+            Thread.sleep(300);
+            Intent intent = new Intent(activity, GameOver.class);
+            intent.putExtra("name", highScore);
+            activity.startActivity(intent);
             activity.finish();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -182,5 +207,29 @@ public class GameView extends SurfaceView implements Runnable {
 
     public int getScore() {
         return score;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public int getCarLaneScore() {
+        return carLaneScore;
+    }
+
+    public int getBusLaneScore() {
+        return busLaneScore;
+    }
+
+    public int getTruckLaneScore() {
+        return truckLaneScore;
     }
 }

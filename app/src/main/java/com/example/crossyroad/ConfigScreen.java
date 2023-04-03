@@ -2,9 +2,11 @@ package com.example.crossyroad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,6 +24,10 @@ public class ConfigScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configscreen);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         difficulty = findViewById(R.id.difficulty); // identify difficulty RadioGroup
         start = findViewById(R.id.start); // identify start button
         name = findViewById(R.id.name); // identify name text field
@@ -29,6 +35,7 @@ public class ConfigScreen extends AppCompatActivity {
         sprites = findViewById(R.id.sprites); // identify sprite RadioGroup
 
         start.setOnClickListener(new View.OnClickListener() { // check if start button is clicked
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 validName(name.getText().toString());
