@@ -22,7 +22,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int life;
 
     //variables for score
-    private int high_score = 0;
+    private int highScore = 0;
     private int score;
     //Is the maximum height that the frog has reached
     private int max;
@@ -30,9 +30,9 @@ public class GameView extends SurfaceView implements Runnable {
     private GameScreen activity;
     private Frog frog;
 
-    public final int carLaneScore = 500;
-    public final int busLaneScore = 100;
-    public final int truckLaneScore = 300;
+    private final int carLaneScore = 500;
+    private final int busLaneScore = 100;
+    private final int truckLaneScore = 300;
 
     public GameView(GameScreen activity, int screenX, int screenY, String name, String difficulty,
                     int life, Frog frog) {
@@ -110,8 +110,8 @@ public class GameView extends SurfaceView implements Runnable {
         if (b) {
             life -= 1;
             frog.setSize(screenX, screenY);
-            if (score > high_score) {
-                high_score = score;
+            if (score > highScore) {
+                highScore = score;
             }
             score = 0;
             max = screenY;
@@ -172,7 +172,7 @@ public class GameView extends SurfaceView implements Runnable {
         try {
             Thread.sleep(300);
             Intent intent = new Intent(activity, GameOver.class);
-            intent.putExtra("name", high_score);
+            intent.putExtra("name", highScore);
             activity.startActivity(intent);
             activity.finish();
         } catch (InterruptedException e) {
@@ -213,7 +213,23 @@ public class GameView extends SurfaceView implements Runnable {
         return life;
     }
 
-    public int getHigh_score() {
-        return high_score;
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public int getCarLaneScore() {
+        return carLaneScore;
+    }
+
+    public int getBusLaneScore() {
+        return busLaneScore;
+    }
+
+    public int getTruckLaneScore() {
+        return truckLaneScore;
     }
 }

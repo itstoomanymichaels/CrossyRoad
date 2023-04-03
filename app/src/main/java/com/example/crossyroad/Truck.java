@@ -24,7 +24,9 @@ public class Truck extends Vehicle {
                 x = screenX;
             }
         } else {
-            if (x >= screenX) x = -width - (6 * screenX / 20);
+            if (x >= screenX) {
+                x = -width - (6 * screenX / 20);
+            }
         }
     }
     @Override
