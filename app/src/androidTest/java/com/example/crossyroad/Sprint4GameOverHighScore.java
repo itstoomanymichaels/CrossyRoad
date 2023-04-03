@@ -17,7 +17,7 @@ import org.mockito.Mockito;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class sprint4GameOverHighScore {
+public class Sprint4GameOverHighScore {
     private GameOver go;
 
     @Before

@@ -40,4 +40,15 @@ public class GameOver extends AppCompatActivity {
         finishAffinity();
     }
 
+    public Button getRestart() {
+        return restart;
+    }
+
+    public Button getQuit() {
+        return quit;
+    }
+
+    public TextView getScore() {
+        return score;
+    }
 }

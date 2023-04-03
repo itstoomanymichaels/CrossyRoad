@@ -4,7 +4,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
-import android.content.res.Resources;
 
 import static org.mockito.Mockito.mock;
 import org.junit.Before;
@@ -12,7 +11,7 @@ import org.mockito.Mockito;
 
 
 @RunWith(AndroidJUnit4.class)
-public class sprint4CarDecreasesLife {
+public class Sprint4CarDecreasesLife {
     private GameView gv;
 
     @Before
