@@ -157,10 +157,17 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(frog.getFrog(), frog.getX(), frog.getY(), paint);
             //If game is over, does something, not yet implemented
             if (isGameOver) {
-                isPlaying = false;
-                getHolder().unlockCanvasAndPost(canvas);
-                waitBeforeExiting();
-                return;
+                if (life == 0) {
+                    isPlaying = false;
+                    getHolder().unlockCanvasAndPost(canvas);
+                    waitBeforeExiting();
+                    return;
+                } else {
+                    isPlaying = false;
+                    getHolder().unlockCanvasAndPost(canvas);
+                    BeforeExiting();
+                    return;
+                }
             }
             getHolder().unlockCanvasAndPost(canvas);
         }
@@ -169,6 +176,18 @@ public class GameView extends SurfaceView implements Runnable {
 
     //Waits a select time, then goes to main screen
     private void waitBeforeExiting() {
+        try {
+            Thread.sleep(300);
+            Intent intent = new Intent(activity, GameOver.class);
+            intent.putExtra("name", highScore);
+            activity.startActivity(intent);
+            activity.finish();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void BeforeExiting() {
         try {
             Thread.sleep(300);
             Intent intent = new Intent(activity, GameOver.class);

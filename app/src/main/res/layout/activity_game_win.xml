@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B62F2F"
+    tools:context=".GameWin"
+    tools:layout_editor_absoluteX="-1dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="261dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="75dp"
+        android:text="You Win!!!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/whigh_score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/whigh_score"
+        android:layout_width="367dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Score:0"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/wrestart"
+        android:layout_width="115dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginEnd="141dp"
+        android:onClick="restart"
+        android:text="Restart"
+        app:layout_constraintBottom_toTopOf="@+id/wquit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whigh_score" />
+
+    <Button
+        android:id="@+id/wquit"
+        android:layout_width="115dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="close"
+        android:text="Quit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wrestart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
