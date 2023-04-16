@@ -52,10 +52,20 @@ public class GameWin extends AppCompatActivity {
         return score;
     }
 
-    public boolean isRestart() { return true; }
+    public boolean isRestart() {
+        if (this.restart != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public boolean isQuit() {
-        return true;
+        if (this.quit != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
