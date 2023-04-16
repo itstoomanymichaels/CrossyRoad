@@ -36,6 +36,9 @@ public abstract class Log {
 
     };
 
+    public abstract int getHeight();
+
+    public abstract int getWidth();
     public int getX() {
         return x;
     }

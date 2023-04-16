@@ -93,7 +93,7 @@ public class Frog {
         height = xx / 20;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
-        this.y = yy - height - 15;
+        this.y = yy - yy / 36 - height / 2;
         this.x = xx / 2 - width / 2;
         this.screenX = xx;
         this.screenY = yy;

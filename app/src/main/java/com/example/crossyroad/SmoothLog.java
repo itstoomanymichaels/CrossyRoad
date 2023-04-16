@@ -43,4 +43,13 @@ public class SmoothLog extends Log {
         }
         return ret;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
 }
