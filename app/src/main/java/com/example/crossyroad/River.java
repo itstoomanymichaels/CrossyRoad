@@ -4,38 +4,41 @@ import android.content.res.Resources;
 
 public class River {
 
-    private Vehicle[] vehicles = new Vehicle[19];
+    private Log[] logs = new Log[21];
 
     public River(int screenY, int screenX, Resources res) {
-        for (int i = 0; i < 19; i++) {
-            Vehicle v;
+        for (int i = 0; i < 21; i++) {
+            Log v;
             //Each if block for 1 lane, each lane corresponds to a type of vehicle
             //Position, speed, and direction are passed to generate vehicle
-            if (i < 4) {
-                v = new Car(i * 6 * screenX / 20, 32 * screenY / 36, screenY, screenX,
-                        5, "L", res);
-            } else if (i < 7) {
-                v = new Car((i - 4) * 8 * screenX / 20, 26 * screenY / 36, screenY, screenX,
+            if (i < 3) {
+                v = new SmoothLog(i * 8 * screenX / 20, 18 * screenY / 36, screenY, screenX,
+                        3, "R", res);
+            } else if (i < 6) {
+                v = new BranchLog(((i - 3) * 10 + 3) * screenX / 20, 16 * screenY / 36, screenY, screenX,
+                        14, "L", res);
+            } else if (i < 9) {
+                v = new SmoothLog((i - 6) * 8 * screenX / 20, 14 * screenY / 36, screenY, screenX,
+                        9, "R", res);
+            } else if (i < 12) {
+                v = new BranchLog(((i - 9) * 10 + 3) * screenX / 20, 12 * screenY / 36, screenY, screenX,
+                        17, "L", res);
+            } else if (i < 15) {
+                v = new SmoothLog((i - 12) * 8 * screenX / 20, 10 * screenY / 36, screenY, screenX,
                         5, "R", res);
-            } else if (i < 10) {
-                v = new Truck((i - 7) * 8 * screenX / 20, 24 * screenY / 36, screenY, screenX,
-                        "L", res);
-            } else if (i < 13) {
-                v = new Truck((i - 10) * 10 * screenX / 20, 30 * screenY / 36, screenY,
-                        screenX, "R", res);
-            } else if (i < 16) {
-                v = new Bus((i - 13) * 10 * screenX / 20, 28 * screenY / 36, screenY, screenX,
-                        20, "L", res);
+            } else if (i < 18) {
+                v = new BranchLog(((i - 15) * 10 + 3) * screenX / 20, 8 * screenY / 36, screenY, screenX,
+                        11, "L", res);
             } else {
-                v = new Bus((i - 16) * 10 * screenX / 20, 22 * screenY / 36, screenY, screenX,
-                        20, "R", res);
+                v = new SmoothLog((i - 18) * 8 * screenX / 20, 6 * screenY / 36, screenY, screenX,
+                        11, "R", res);
             }
-            vehicles[i] = v;
+            logs[i] = v;
         }
     }
 
-    public Vehicle[] getVehicles() {
-        return vehicles;
+    public Log[] getLogs() {
+        return logs;
     }
 
 

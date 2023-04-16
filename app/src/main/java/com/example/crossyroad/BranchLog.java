@@ -17,6 +17,7 @@ public class BranchLog extends Log{
     }
 
     public void sway() {
+        x += speed;
         if (direction.equals("L")) {
             if ((x + width) <= 0) {
                 x = screenX + (5 * screenX / 20);
@@ -42,7 +43,5 @@ public class BranchLog extends Log{
         }
         return ret;
     }
-
-
 
 }

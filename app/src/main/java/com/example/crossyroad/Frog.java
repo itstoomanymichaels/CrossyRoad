@@ -64,6 +64,10 @@ public class Frog {
         return x;
     }
 
+    public boolean isDead() {
+        return  (x < 0 || (x > screenX - width));
+    }
+
     public void setX(int x) {
         this.x = x;
     }

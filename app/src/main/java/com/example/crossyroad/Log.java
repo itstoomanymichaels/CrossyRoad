@@ -27,6 +27,7 @@ public abstract class Log {
         }
     }
     public abstract Bitmap getLog();
+    public abstract void sway();
 
     public abstract boolean isCollided(Frog frog);
 
