@@ -75,7 +75,7 @@ public class ConfigScreen extends AppCompatActivity {
         return (d != -1);
     }
     public boolean validName(String newName) {
-        return (newName.length() != 0);
+        return (newName.trim().length() != 0);
     }
     public boolean spriteIsSelected(int s) {
         return (s != -1);
