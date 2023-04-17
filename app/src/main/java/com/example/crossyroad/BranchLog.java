@@ -9,6 +9,7 @@ public class BranchLog extends Log{
 
     protected int width;
     protected Bitmap log;
+    private int id = R.drawable.bran;
 
     public BranchLog(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
         super(x, y, screenY, screenX, speed, direction);
@@ -51,4 +52,5 @@ public class BranchLog extends Log{
     public int getHeight() {
         return height;
     }
+    public int getID(){return id;}
 }

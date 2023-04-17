@@ -9,6 +9,7 @@ public class SmoothLog extends Log {
 
     protected int width;
     protected Bitmap log;
+    private int id = R.drawable.nbran;
 
     public SmoothLog(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
         super(x, y, screenY, screenX, speed, direction);
@@ -51,5 +52,6 @@ public class SmoothLog extends Log {
     public int getHeight() {
         return height;
     }
+    public int getID(){return id;}
 
 }
