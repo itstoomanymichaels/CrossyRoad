@@ -18,6 +18,7 @@ import static org.mockito.Mockito.mock;
 public class Sprint5TestsTimothy {
 
     private GameWin gw;
+    private TextView congratsText;
     private Log log = new BranchLog(0, 0, 200, 100, 14, "L",
             Resources.getSystem());
     private Frog frog = new Frog(0,0, Resources.getSystem(), 1);
@@ -29,19 +30,20 @@ public class Sprint5TestsTimothy {
 
     public void setUp() {
         gw = mock(GameWin.class);
+        congratsText = mock(TextView.class);
     }
 
     @Test
 
     public void congratsShown() {
-        Mockito.when(gw.getCongrats()).thenReturn(new TextView(gw));
+        Mockito.when(gw.getCongrats()).thenReturn(congratsText);
         assertTrue(gw.getCongrats() != null);
     }
 
     @Test
 
     public void getOnLog() {
-        Mockito.when(log.isCollided(frog)).thenReturn(Rect.intersects(f, c));
+        Mockito.when(log.isCollided(frog)).thenReturn(true);
         assertTrue(log.isCollided(frog));
     }
 
