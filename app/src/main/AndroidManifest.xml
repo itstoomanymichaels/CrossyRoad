@@ -12,6 +12,14 @@
         android:theme="@style/Theme.CrossyRoad"
         tools:targetApi="31">
         <activity
+            android:name=".GameWin"
+            android:exported="false" />
+        <activity
+            android:name=".Notneed"
+            android:exported="false"
+            android:label="@string/title_activity_win_screen"
+            android:theme="@style/Theme.CrossyRoad.NoActionBar" />
+        <activity
             android:name=".GameOver"
             android:exported="false" />
         <activity

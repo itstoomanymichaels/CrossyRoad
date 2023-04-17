@@ -26,9 +26,11 @@ public class Frog {
         this.screenX = screenX;
         this.screenY = screenY;
 
+        this.width = screenX / 20;
+        this.height = screenX / 20;
+
         this.y = screenY - height - 15;
         this.x = screenX / 2 - width / 2;
-
     }
 
     public void moveRight() {
@@ -63,10 +65,19 @@ public class Frog {
     public int getX() {
         return x;
     }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public boolean isDead() {
+        return  (x < 0 || (x > screenX - width));
+    }
+
     public int getY() {
         return y;
     }
-
+    public void setY(int y) {
+        this.y = y;
+    }
     public int getHeight() {
         return height;
     }
@@ -85,7 +96,7 @@ public class Frog {
         height = xx / 20;
 
         frog = Bitmap.createScaledBitmap(frog, width, height, false);
-        this.y = yy - height - 15;
+        this.y = yy - yy / 36 - height / 2;
         this.x = xx / 2 - width / 2;
         this.screenX = xx;
         this.screenY = yy;
