@@ -33,8 +33,7 @@ public class Sprint5WonjinUnitTests {
     @Test
     public void gameWinScreen(){
         try {
-            // Replace "com.example.MyClass" with the fully qualified name of your class
-            Class.forName("com.example.GameWin");
+            Class.forName("com.example.crossyroad.GameWin");
         } catch (ClassNotFoundException e) {
             // If the class is not found, the test will fail
             assertNotNull("GameWin does not exist", null);
