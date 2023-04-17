@@ -4,6 +4,9 @@ package com.example.crossyroad;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+
+
 public class Frog {
 
     private int x;
@@ -59,7 +62,9 @@ public class Frog {
             y = screenY - height;
         }
     }
-
+    public Rect getRect() {
+        return new Rect(x, y, x + width, y + height);
+    }
     public int getX() {
         return x;
     }

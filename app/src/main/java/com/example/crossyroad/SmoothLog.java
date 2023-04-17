@@ -34,8 +34,7 @@ public class SmoothLog extends Log {
     }
 
     public boolean isCollided(Frog frog) {
-        Rect f = new Rect(frog.getX(), frog.getY(), frog.getX() + frog.getWidth(),
-                frog.getY() + frog.getHeight());
+        Rect f = frog.getRect();
         Rect c = new Rect(x, y, x + width, y + height);
         boolean ret = Rect.intersects(f, c);
         if (ret) {

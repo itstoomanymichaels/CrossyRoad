@@ -36,8 +36,7 @@ public class Truck extends Vehicle {
 
     @Override
     public boolean isCollided(Frog frog) {
-        Rect f = new Rect(frog.getX(), frog.getY(), frog.getX() + frog.getWidth(),
-                frog.getY() + frog.getHeight());
+        Rect f = frog.getRect();
         Rect c = new Rect(x, y, x + width, y + height);
         return Rect.intersects(f, c);
     }

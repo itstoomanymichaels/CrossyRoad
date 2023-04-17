@@ -20,12 +20,10 @@ public class BranchLog extends Log{
         x += speed;
         if (direction.equals("L")) {
             if ((x + width) <= 0) {
-                x = screenX + (5 * screenX / 20);
-            }
+                x = screenX + (5 * screenX / 20); }
         } else {
             if (x >= screenX) {
-                x = -width - (5 * screenX / 20);
-            }
+                x = -width - (5 * screenX / 20); }
         }
     }
 
@@ -34,8 +32,7 @@ public class BranchLog extends Log{
     }
 
     public boolean isCollided(Frog frog) {
-        Rect f = new Rect(frog.getX(), frog.getY(), frog.getX() + frog.getWidth(),
-                frog.getY() + frog.getHeight());
+        Rect f = frog.getRect();
         Rect c = new Rect(x, y, x + width, y + height);
         boolean ret = Rect.intersects(f, c);
         if (ret) {
