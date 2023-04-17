@@ -19,19 +19,13 @@ public class Sprint5WonjinUnitTests {
             Resources.getSystem());
     private SmoothLog smoothlog = new SmoothLog(0, 0, 200, 100, 14, "L",
             Resources.getSystem());
-//    private GameView gv;
-//    @Before
-//    public void setUp() {
-//        // Create a mock object
-//        gv = mock(GameView.class);
-//    }
 
     @Test
     public void differentImage() {
         assertEquals(smoothlog.getID() == branchlog.getID(), false);
     }
     @Test
-    public void gameWinScreen(){
+    public void gameWinScreen() {
         try {
             Class.forName("com.example.crossyroad.GameWin");
         } catch (ClassNotFoundException e) {

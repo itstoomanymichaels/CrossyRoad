@@ -93,7 +93,7 @@ public class GameView extends SurfaceView implements Runnable {
                     safe = true;
                 }
             }
-            if (safe == false) {
+            if (!safe) {
                 collision = true;
             }
         }
@@ -192,12 +192,12 @@ public class GameView extends SurfaceView implements Runnable {
                 if (life == 0) {
                     isPlaying = false;
                     getHolder().unlockCanvasAndPost(canvas);
-                    BeforeExiting(GameOver.class);
+                    beforeExiting(GameOver.class);
                     return;
                 } else {
                     isPlaying = false;
                     getHolder().unlockCanvasAndPost(canvas);
-                    BeforeExiting(GameWin.class);
+                    beforeExiting(GameWin.class);
                     return;
                 }
             }
@@ -207,14 +207,13 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     //Waits a select time, then goes to main screen
-    private void BeforeExiting(Class<?> end) {
+    private void beforeExiting(Class<?> end) {
         try {
             Thread.sleep(300);
             Intent intent;
             if (end == GameWin.class) {
                 intent = new Intent(activity, GameWin.class);
-            }
-            else {
+            } else {
                 intent = new Intent(activity, GameOver.class);
             }
             intent.putExtra("name", highScore);

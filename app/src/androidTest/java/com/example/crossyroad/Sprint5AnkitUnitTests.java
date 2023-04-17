@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 import android.content.res.Resources;
 
+@RunWith(AndroidJUnit4.class)
 public class Sprint5AnkitUnitTests {
 
     private Log branchlog = new BranchLog(0, 0, 200, 100, 14, "L",

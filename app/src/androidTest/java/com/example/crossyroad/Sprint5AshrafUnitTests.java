@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
+@RunWith(AndroidJUnit4.class)
 public class Sprint5AshrafUnitTests {
     private int score = 500;
     private int highScore = 0;
@@ -30,7 +31,7 @@ public class Sprint5AshrafUnitTests {
 
     @Test
     public void goalTilePointsTest() {
-        while(!isGameOver) {
+        while (!isGameOver) {
             checkForGoal();
             frogY -= (screenY / 20); // move towards goal
         }
@@ -39,11 +40,11 @@ public class Sprint5AshrafUnitTests {
 
     @Test
     public void outOfBoundsTest() {
-        while(frogX >= 0) {
+        while (frogX >= 0) {
             frogX -= (screenY / 20); // move towards bound
         }
         assertEquals(true, boundsReached());
-        while(frogX <= screenX - 36) {
+        while (frogX <= screenX - 36) {
             frogX += (screenY / 20); // move towards other bound
         }
         assertEquals(true, boundsReached());

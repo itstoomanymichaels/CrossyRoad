@@ -11,7 +11,8 @@ public class SmoothLog extends Log {
     protected Bitmap log;
     private int id = R.drawable.nbran;
 
-    public SmoothLog(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
+    public SmoothLog(int x, int y, int screenY, int screenX, int speed, String direction,
+                     Resources res) {
         super(x, y, screenY, screenX, speed, direction);
         this.log = BitmapFactory.decodeResource(res, R.drawable.nbran);
         width = 3 * screenX / 20;
@@ -52,6 +53,11 @@ public class SmoothLog extends Log {
     public int getHeight() {
         return height;
     }
-    public int getID(){return id;}
+    public int getID() {
+        return id;
+    }
+    public int getSpeed() {
+        return speed;
+    }
 
 }
