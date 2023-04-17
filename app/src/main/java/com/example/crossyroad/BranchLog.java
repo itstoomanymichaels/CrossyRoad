@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
-public class BranchLog extends Log{
+public class BranchLog extends Log {
 
     protected int width;
     protected Bitmap log;
+    private int id = R.drawable.bran;
 
-    public BranchLog(int x, int y, int screenY, int screenX, int speed, String direction, Resources res) {
+    public BranchLog(int x, int y, int screenY, int screenX, int speed, String direction,
+                     Resources res) {
         super(x, y, screenY, screenX, speed, direction);
         this.log = BitmapFactory.decodeResource(res, R.drawable.bran);
         width = 5 * screenX / 20;
@@ -50,5 +52,11 @@ public class BranchLog extends Log{
 
     public int getHeight() {
         return height;
+    }
+    public int getID() {
+        return id;
+    }
+    public int getSpeed() {
+        return speed;
     }
 }

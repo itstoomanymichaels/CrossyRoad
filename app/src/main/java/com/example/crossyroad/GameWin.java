@@ -62,17 +62,15 @@ public class GameWin extends AppCompatActivity {
     public boolean isRestart() {
         if (this.restart != null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean isQuit() {
         if (this.quit != null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 }

@@ -33,7 +33,6 @@ public abstract class Log {
 
     public int getSpeed() {
         return speed;
-
     };
 
     public abstract int getHeight();

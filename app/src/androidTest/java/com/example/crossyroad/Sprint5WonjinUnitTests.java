@@ -15,23 +15,17 @@ import static org.junit.Assert.assertEquals;
 //@RunWith(AndroidJUnit4.class)
 public class Sprint5WonjinUnitTests {
 
-    private Log branchlog = new BranchLog(0, 0, 200, 100, 14, "L",
+    private BranchLog branchlog = new BranchLog(0, 0, 200, 100, 14, "L",
             Resources.getSystem());
-    private Log smoothlog = new SmoothLog(0, 0, 200, 100, 14, "L",
+    private SmoothLog smoothlog = new SmoothLog(0, 0, 200, 100, 14, "L",
             Resources.getSystem());
-//    private GameView gv;
-//    @Before
-//    public void setUp() {
-//        // Create a mock object
-//        gv = mock(GameView.class);
-//    }
 
     @Test
     public void differentImage() {
-        assertEquals(smoothlog.getLog() == branchlog.getLog(), false);
+        assertEquals(smoothlog.getID() == branchlog.getID(), false);
     }
     @Test
-    public void gameWinScreen(){
+    public void gameWinScreen() {
         try {
             Class.forName("com.example.crossyroad.GameWin");
         } catch (ClassNotFoundException e) {
