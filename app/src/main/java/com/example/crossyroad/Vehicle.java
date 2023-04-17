@@ -2,7 +2,7 @@ package com.example.crossyroad;
 
 import android.graphics.Bitmap;
 
-public abstract class Vehicle implements Drivable {
+public abstract class Vehicle {
     protected int height;
     protected int screenX;
     protected int x;
@@ -39,5 +39,7 @@ public abstract class Vehicle implements Drivable {
     public int getY() {
         return y;
     }
+
+    public abstract void drive();
 
 }
