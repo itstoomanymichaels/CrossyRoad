@@ -12,6 +12,8 @@ public class GameWin extends AppCompatActivity {
 
     private TextView score;
 
+    private TextView congrats;
+
     private Button restart;
 
     private Button quit;
@@ -22,6 +24,7 @@ public class GameWin extends AppCompatActivity {
         setContentView(R.layout.activity_game_win);
 
         score = findViewById(R.id.whigh_score);
+        congrats = findViewById(R.id.textView3);
         restart = (Button) findViewById(R.id.wrestart);
         quit = findViewById(R.id.wquit);
 
@@ -52,20 +55,22 @@ public class GameWin extends AppCompatActivity {
         return score;
     }
 
+    public TextView getCongrats() {
+        return congrats;
+    }
+
     public boolean isRestart() {
         if (this.restart != null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean isQuit() {
         if (this.quit != null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 }
